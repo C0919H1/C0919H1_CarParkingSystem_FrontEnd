@@ -1,0 +1,130 @@
+<div class="basic-container">
+    <h4>Danh sách xe</h4>
+
+    <form [formGroup]='formCustomer'>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Họ Tên Khách Hàng" disabled formControlName='fullName'>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Số CMND" disabled formControlName='indentity'>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <form [formGroup]='formVehicle'>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Loại Xe" disabled formControlName='typeOfVehicle'>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Biển Số" disabled formControlName='licensePlate'>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <form [formGroup]='formTicketType'>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Loại Vé</mat-label>
+                        <mat-select formControlName='typeOfTicket' required (selectionChange)="getParkingPosition($event.value)">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let ticket of ticketTypes" [value]="ticket">
+                                {{ticket.nameTicketType}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="typeOfTicket.hasError('required')">Hãy Chọn Loại Vé</mat-error> -->
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Vị Trí Đỗ</mat-label>
+                        <mat-select formControlName="parkingPosition" required (selectionChange)="setParkingPosition($event.value)">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let position of positions" [value]="position">
+                                {{position.nameOfPosition}}
+                            </mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error> -->
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker1" placeholder="Ngày Bắt Đầu" formControlName="dateBegin">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker2" placeholder="Ngày Kết Thúc" formControlName="dateEnd">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div class="container">
+        <!-- Table -->
+        <div class="container-table">
+            <!-- Position Column -->
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="STT">
+                    <th mat-header-cell *matHeaderCellDef> STT </th>
+                    <td mat-cell *matCellDef="let element,let i = index"> {{i+1}}
+                    </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="licensePlate">
+                    <th mat-header-cell *matHeaderCellDef> Biển số xe </th>
+                    <td mat-cell *matCellDef="let element"> {{element.licensePlate}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="typeOfVehicle">
+                    <th mat-header-cell *matHeaderCellDef> Loại xe </th>
+                    <td mat-cell *matCellDef="let element"> {{element.typeOfVehicle}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="typeticket">
+                    <th mat-header-cell *matHeaderCellDef> Loại vé </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ticketType}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Thời hạn vé </th>
+                    <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+                </ng-container>
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable"> Tác vụ </th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        <button mat-raised-button color="primary" (click)="getVehicleById(element.idVehicle)">Chọn</button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+        </div>
+        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
+        </mat-paginator>
+    </div>
+    <div style="text-align: center;">
+        <button mat-raised-button color="accent" (click)='createTicket()'>Đăng Ký</button>
+    </div>
+</div>

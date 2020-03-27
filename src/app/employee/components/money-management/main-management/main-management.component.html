@@ -1,0 +1,15 @@
+<div id="main" style="width: 100%;">
+    <div id="nav">
+        <div class="">
+            <nav mat-tab-nav-bar>
+                <a mat-tab-link [routerLink]="['asd']" routerLinkActive="active-link">Tổng Hợp</a>
+                <a mat-tab-link [routerLink]="['month-management']" routerLinkActive="active-link">Thống Kê Theo Tháng</a>
+                <a mat-tab-link [routerLink]="['year-management']" routerLinkActive="active-link">Thống Kê Theo Năm</a>
+            </nav>
+        </div>
+    </div>
+
+    <div id="content">
+        <router-outlet style="height: 100%;"></router-outlet>
+    </div>
+</div>

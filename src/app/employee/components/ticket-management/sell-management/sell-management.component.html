@@ -1,0 +1,108 @@
+<!-- <div id="main-div">
+    <div id="sub-div">
+        <h2>Gia Hạn Vé:</h2>
+        <form class="example-form">
+            <mat-form-field id="id-car">
+                <input [(ngModel)]="idCar" matInput placeholder="Nhập ID Xe" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+
+            <mat-form-field id="nameCustomer">
+                <input matInput placeholder="Tên Khách Hàng" [(ngModel)]="idCar" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+
+            <mat-form-field id="ticketClass">
+                <mat-label>Chọn Hạng Vé</mat-label>
+                <mat-select [(value)]="selected">
+                    <mat-option>Vé Tháng (Thường)</mat-option>
+                    <mat-option value="option1">Vé Tháng (Vip)</mat-option>
+                    <mat-option value="option2">Vé Năm (Thường)</mat-option>
+                    <mat-option value="option3">Vé Năm (Vip)</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <div id="confirm">
+            <button mat-flat-button color="primary">Gia Hạn</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="basic-container">
+    <h4>Danh sách khách hàng</h4>
+    <form class="search ">
+        <mat-form-field>
+            <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
+            <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value" (click)="filter.value=''; applyFilter('');">
+              <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+    </form>
+    <div class="container">
+
+        <div class="container-table">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="idcustomer">
+                    <th mat-header-cell *matHeaderCellDef> STT </th>
+                    <td mat-cell *matCellDef="let element,let i = index"> {{i+1}}
+                    </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="fullname">
+                    <th mat-header-cell *matHeaderCellDef> Họ và tên </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                </ng-container>
+
+                <!-- Date Of Birth Column -->
+                <ng-container matColumnDef="dateOfBirth">
+                    <th mat-header-cell *matHeaderCellDef> Ngày sinh </th>
+                    <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date:'dd/MM/yyyy'}} </td>
+                </ng-container>
+                <!-- Is Male Column -->
+                <ng-container matColumnDef="gender">
+                    <th mat-header-cell *matHeaderCellDef> Giới tính </th>
+                    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                </ng-container>
+
+                <!-- Number Phone Column -->
+                <ng-container matColumnDef="phoneNumber">
+                    <th mat-header-cell *matHeaderCellDef> Số điện thoại </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+                </ng-container>
+
+                <!-- identify Column -->
+                <ng-container matColumnDef="indentity">
+                    <th mat-header-cell *matHeaderCellDef> CMND </th>
+                    <td mat-cell *matCellDef="let element"> {{element.indentity}} </td>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <!-- Address Column -->
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef> Địa chỉ </th>
+                    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable"> Tác vụ </th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        <button mat-raised-button color="primary" (click)="openDialogPickVehicle(element.idCustomer)">Chọn</button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+
+        </div>
+        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
+        </mat-paginator>
+    </div>
+</div>

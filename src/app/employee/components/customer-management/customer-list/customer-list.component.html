@@ -1,0 +1,139 @@
+<div class="basic-container">
+    <mat-grid-list cols="4" rowHeight="60px">
+        <mat-grid-tile>
+            <h4>Danh sách khách hàng</h4>
+        </mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-raised-button matTooltip="Nhấn để thêm mới khách hàng" class="mr-3" (click)="addCustomer()">Thêm
+                mới khách hàng</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field>
+                <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
+                <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value" (click)="filter.value=''; applyFilter('');">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <!-- Input Find -->
+    <div class="container">
+
+        <div class="container-table">
+            <!-- Position Column -->
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [formGroup]="formCreateCustomer">
+                <!-- Position Column -->
+                <ng-container matColumnDef="idcustomer">
+                    <th mat-header-cell *matHeaderCellDef> STT </th>
+                    <td mat-cell *matCellDef="let element,let i = index"> {{i+1}}
+                    </td>
+                </ng-container>
+                <!-- Name Column -->
+                <ng-container matColumnDef="fullname">
+                    <th mat-header-cell *matHeaderCellDef> Họ và tên </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.fullName}}</p>
+                        <input type="text" matInput *ngIf="element.create" formControlName="fullName">
+                        <p *ngIf="element.create && formCreateCustomer.controls.fullName.errors?.required && formCreateCustomer.controls.fullName.touched" class="text-danger">Vui lòng nhập họ tên</p>
+                    </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="dateOfBirth">
+                    <th mat-header-cell *matHeaderCellDef> Ngày sinh </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.dateOfBirth | date:'dd/MM/yyyy'}}</p>
+                        <div *ngIf="element.create">
+                            <mat-form-field>
+                                <mat-label>Chọn ngày sinh</mat-label>
+                                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Chọn ngày sinh" formControlName="dateOfBirth">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            <p *ngIf="element.create && formCreateCustomer.controls.dateOfBirth.errors?.required && formCreateCustomer.controls.dateOfBirth.touched" class="text-danger">Vui lòng chọn ngày sinh</p>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="gender">
+                    <th mat-header-cell *matHeaderCellDef> Giới tính </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.gender}}</p>
+                        <div *ngIf="element.create" class="select">
+                            <mat-form-field>
+                                <mat-label>Giới tính</mat-label>
+                                <select matNativeControl required formControlName="gender">
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                </select>
+                            </mat-form-field>
+                            <p *ngIf="element.create && formCreateCustomer.controls.gender.errors?.required && formCreateCustomer.controls.gender.touched" class="text-danger">Vui lòng chọn giới tính</p>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- identify Column -->
+                <ng-container matColumnDef="identify">
+                    <th mat-header-cell *matHeaderCellDef> CMND </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.identify}}</p>
+                        <input type="text" matInput *ngIf="element.create" formControlName="identify">
+                        <p *ngIf="element.create && formCreateCustomer.controls.identify.errors?.required && formCreateCustomer.controls.identify.touched" class="text-danger">Vui lòng nhập số CMND</p>
+                        <p *ngIf="element.create && formCreateCustomer.controls.identify.errors?.pattern && formCreateCustomer.controls.identify.touched" class="text-danger">Số CMND không đúng định dạng</p>
+                    </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="phoneNumber">
+                    <th mat-header-cell *matHeaderCellDef> Số điện thoại </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.phoneNumber}}</p>
+                        <input type="text" matInput *ngIf="element.create" formControlName="phoneNumber">
+                        <p *ngIf="element.create && formCreateCustomer.controls.phoneNumber.errors?.required && formCreateCustomer.controls.phoneNumber.touched" class="text-danger">Vui lòng nhập số điện thoại</p>
+                        <p *ngIf="element.create && formCreateCustomer.controls.phoneNumber.errors?.pattern && formCreateCustomer.controls.phoneNumber.touched" class="text-danger">Định dạng: 090 | 091 | (84)+90 | (84)+91 </p>
+                    </td>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.email}}</p>
+                        <input type="text" matInput *ngIf="element.create " formControlName="email">
+                        <p *ngIf="element.create && formCreateCustomer.controls.email.errors?.required && formCreateCustomer.controls.email.touched" class="text-danger">Vui lòng nhập email</p>
+                        <p *ngIf="element.create && formCreateCustomer.controls.email.errors?.email && formCreateCustomer.controls.email.touched" class="text-danger">Email không đúng định dạng</p>
+                    </td>
+                </ng-container>
+
+                <!-- Address Column -->
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef> Địa chỉ </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.address}}</p>
+                        <input type="text" matInput *ngIf="element.create" formControlName="address">
+                        <p *ngIf="element.create && formCreateCustomer.controls.address.errors?.required && formCreateCustomer.controls.address.touched" class="text-danger">Vui lòng nhập địa chỉ</p>
+                    </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable"> Tác vụ </th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        <button [routerLink]="['/vehicle-list/' + element.idCustomer]" *ngIf="!element.create">Thông tin xe</button>
+                        <mat-icon style="margin-left: 20px;" *ngIf="!element.create" (click)="openEdit(element.idCustomer,i)">edit</mat-icon>
+                        <mat-icon *ngIf="element.create" style="margin-left: 20px;" (click)="save(element.idCustomer, i)">save</mat-icon>
+                        <mat-icon style="margin-left: 20px;" *ngIf="!element.create" (click)="openDialog(element.idCustomer)">delete</mat-icon>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+
+        </div>
+        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
+        </mat-paginator>
+    </div>
+</div>

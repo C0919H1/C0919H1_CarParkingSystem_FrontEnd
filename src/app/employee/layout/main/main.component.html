@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<mat-sidenav-container style="height: 92%;" autosize>
+    <mat-sidenav class=" bg-sidenav" mode="side" opened>
+        <mat-nav-list class="bg-nav-list">
+            <a mat-list-item [routerLink]="['/home-page']" routerLinkActive="active-list-item">
+                <mat-icon>home</mat-icon>. Trang chủ
+            </a>
+            <a mat-list-item [routerLink]="['/employee-list']" routerLinkActive="active-list-item">
+                <mat-icon>person</mat-icon>. Quản lý nhân viên
+            </a>
+            <a mat-list-item [routerLink]="['/customer-list']" routerLinkActive="active-list-item">
+                <mat-icon>account_box</mat-icon>. Quản lý khách hàng
+            </a>
+            <a mat-list-item [routerLink]="['/car-management']" routerLinkActive="active-list-item">
+                <mat-icon>directions_car</mat-icon>. Quản lý xe ra / vào
+            </a>
+            <a mat-list-item [routerLink]="['/ticket-management']" routerLinkActive="active-list-item">
+                <mat-icon>payment</mat-icon>. Quản lý vé
+            </a>
+            <a mat-list-item [routerLink]="['/money-management']" routerLinkActive="active-list-item">
+                <mat-icon>assessment</mat-icon>. Thống kê
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

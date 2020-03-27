@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+    <p>Bạn Có Chắc Muốn Xóa Vé Này?</p>
+    <hr>
+    <p>ID vé: {{idTicket}}</p>
+    <p>Biển số: {{licensePlate}}</p>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" style="margin-left: 30px;">Quay Lại</button>
+    <button mat-button (click)="deleteTicket()" cdkFocusInitial>Hủy Vé</button>
+</div>

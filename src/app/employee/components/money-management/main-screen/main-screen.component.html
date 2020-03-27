@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row" id="row">
+        <div class="col-7">
+            <mat-card class="example-card-1">
+                <mat-card-header>
+                    <mat-card-title>Thống Kê Loại Phương Tiện</mat-card-title>
+                    <mat-card-subtitle>Các loại phương tiện thông dụng hiện nay tại bãi</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div>
+                        <canvas baseChart [colors]="chartColors" [data]="chartData" [labels]="chartLabels" [chartType]="chartType" [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                        </canvas>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+        <div class="col-5">
+            <mat-card class="example-card-3">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>Thống Kê Hệ Thống</mat-card-title>
+                    <mat-card-subtitle>Dữ liệu Thống kê tổng hợp của hệ thống</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item>Số Lượng Khách Hàng :73</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Số Lượng Nhân Viên :10</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Số Lượng Xe :100</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Số Lượng Vị Trí Đỗ :160</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Số Lượng Vé Hiện Tại :100</mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+                <mat-card-actions>
+                </mat-card-actions>
+            </mat-card>
+            <div style="height: 3%;"></div>
+            <mat-card class="example-card-2">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>Phiên Bản Hệ Thống</mat-card-title>
+                    <mat-card-subtitle>Phiên hiện tại v1.0.0 . Cập nhập lần cuối 30-03-2020</mat-card-subtitle>
+                    <mat-card-subtitle>License By C0919H1</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+
+                </mat-card-content>
+                <mat-card-actions>
+
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

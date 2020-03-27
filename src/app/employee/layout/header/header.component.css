@@ -1,0 +1,25 @@
+.filler {
+    flex: 1 1 auto;
+ }
+ .gap {
+    margin-right: 10px;
+    margin-left: 10px;
+ }
+ .header-bold {
+     font-weight: bold;
+     font-size: 25px;
+ }
+ .header-item {
+     font-size: 18px;
+ }
+ .header-item:hover{
+     color: #dfe6e9;
+ }
+ .header-icon {
+     font-size: 30px;
+ }
+.toolnav {
+    background-color: rgb(72,207,173); 
+    color: black;
+    height: 8%;
+}

@@ -1,0 +1,47 @@
+<img class="wave" src="../../../assets/img/wave1.png" />
+<div class="container">
+    <div class="form-container">
+        <div class="img">
+            <img src="../../../assets/img/img1.svg">
+        </div>
+        <div class="login-container">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <img class="avatar" src="../../../assets/img/avatar.svg" />
+                <h2>Welcome</h2>
+                <div class="social-container">
+                    <span style="cursor:pointer" class="social" (click)=signInWithFB()><i class="fab fa-facebook-f"></i></span>
+                    <span style="cursor:pointer" class="social" (click)=signInWithGoogle()><i class="fab fa-google-plus-g"></i></span>
+                </div>
+                <div class="input-div">
+                    
+                    <!-- <input class="input" type="text" formControlName="username"> -->
+                    <mat-form-field>
+                        <input class="input" matInput (keyup)="applyFilter($event.target.value)"
+                            formControlName="username" placeholder="Email">
+                    </mat-form-field>
+                </div>
+                <div class="alert alert-danger" role="alert"
+                    *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched">
+                    Vui lòng nhập username!
+                </div>
+                <div class="input-div">
+                        <mat-form-field>
+                            <input class="input" matInput (keyup)="applyFilter($event.target.value)"
+                                formControlName="password" placeholder="Password" type="password">
+                        </mat-form-field>
+
+                </div>
+                <div class="alert alert-danger" role="alert"
+                    *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
+                    Vui lòng nhập password!
+                </div>
+                <span style="cursor:pointer" (click)=openDialog()>Quên Mật Khẩu ?</span><br>
+                <input type="submit" class="btn" value="Login">
+                <mat-error class="error-message">
+                    {{listError}}
+                </mat-error>
+            </form>
+        </div>
+
+    </div>
+</div>
