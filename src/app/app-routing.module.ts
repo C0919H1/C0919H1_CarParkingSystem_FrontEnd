@@ -85,6 +85,6 @@ const routes: Routes = [
     MaterialModule
   ],
   entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent],
-  declarations: [HeaderComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent]
+  declarations: [HeaderComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent,ParkingPositionListComponent]
 })
 export class AppRoutingModule { }
