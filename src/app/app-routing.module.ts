@@ -36,7 +36,6 @@ import { RevenueStatisticComponent } from './employee/components/money-managemen
 import { ParkingPositionListComponent } from './employee/components/parking-position-management/parking-position-list/parking-position-list.component';
 import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
 
-
 const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
@@ -45,6 +44,7 @@ const routes: Routes = [
       { path: 'ticket-management', component: TicketManagementComponent },
       { path: 'employee-list', component: EmployeeListComponent },
       { path: 'customer-list', component: CustomerListComponent },
+     
 
       {
         path: 'money-management', component: MainManagementComponent, children: [
