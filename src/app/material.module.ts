@@ -18,6 +18,9 @@ import { ExtensionManagementComponent } from './employee/components/ticket-manag
 import { SellManagementComponent } from './employee/components/ticket-management/sell-management/sell-management.component'
 import { VehiclePickedComponent } from './employee/components/ticket-management/vehicle-picked/vehicle-picked.component'
 import { from } from 'rxjs';
+import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
+
+
 const MaterialModules = [
   MatProgressBarModule,
   MatProgressSpinnerModule,
@@ -63,7 +66,7 @@ const MaterialModules = [
     ExtensionManagementComponent,
     SellManagementComponent,
     VehiclePickedComponent,
-
+    ParkingPositionDetailComponent
   ]
   
 })

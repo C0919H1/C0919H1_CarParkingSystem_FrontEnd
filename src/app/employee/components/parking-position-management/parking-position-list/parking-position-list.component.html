@@ -1,7 +1,7 @@
 <div class="basic-container">
     <mat-grid-list cols="4" rowHeight="60px">
         <mat-grid-tile>
-          <h4>Danh sách bãi xe</h4>
+            <h4>Danh sách bãi xe</h4>
         </mat-grid-tile>
         <mat-grid-tile></mat-grid-tile>
         <mat-grid-tile>
@@ -10,14 +10,13 @@
         <mat-grid-tile>
             <mat-form-field>
                 <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
-                <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
-                    (click)="filter.value=''; applyFilter('');">
+                <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value" (click)="filter.value=''; applyFilter('');">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>
         </mat-grid-tile>
-      </mat-grid-list>
-      <!-- <form [formGroup]="formFloor">
+    </mat-grid-list>
+    <!-- <form [formGroup]="formFloor">
         <p>Tầng:</p>
         <mat-form-field>
           <mat-label>Tầng</mat-label>
@@ -27,8 +26,8 @@
           </select>
       </mat-form-field>
       </form> -->
-      <h6 h6 style="margin-left: 30px; float: left; font-weight: bolder;">Tầng: </h6>
-      <select style="float: left; margin-left: 15px;">
+    <h6 h6 style="margin-left: 30px; float: left; font-weight: bolder;">Tầng: </h6>
+    <select style="float: left; margin-left: 15px;">
         <option value=1>1</option>
         <option value=2>2</option>
     </select>
@@ -46,8 +45,8 @@
 
                 <ng-container matColumnDef="position">
                     <th mat-header-cell *matHeaderCellDef> Vị trí </th>
-                    <td mat-cell *matCellDef="let element"> 
-                       <p *ngIf="!element.create" >{{element.position}} </p>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.position}} </p>
                         <!-- <p *ngIf="element.create && formCreateVehicle.controls.licensePlate.errors?.required && formCreateVehicle.controls.licensePlate.touched"
                         class="text-danger">Vui lòng nhập biển số xe</p> -->
                     </td>
@@ -55,20 +54,26 @@
 
                 <ng-container matColumnDef="floor">
                     <th mat-header-cell *matHeaderCellDef> Tầng </th>
-                    <td mat-cell *matCellDef="let element"> 
-                        <p *ngIf="!element.create" >{{element.floor}} </p>
-                         <!-- <p *ngIf="element.create && formCreateVehicle.controls.typeOfVehicle.errors?.required && formCreateVehicle.controls.typeOfVehicle.touched"
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.floor}} </p>
+                        <!-- <p *ngIf="element.create && formCreateVehicle.controls.typeOfVehicle.errors?.required && formCreateVehicle.controls.typeOfVehicle.touched"
                          class="text-danger">Vui lòng nhập loại xe</p> -->
-                     </td>
+                    </td>
                 </ng-container>
 
                 <!-- Action Column -->
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef class="headerTable"> Tác vụ </th>
                     <td mat-cell *matCellDef="let element; let i = index;">
-                        <mat-icon >edit</mat-icon>
-                        <mat-icon style="margin-left: 20px;">save</mat-icon>
-                        <mat-icon style="margin-left: 30px;">delete</mat-icon>
+                        <button mat-icon-button color="accent">
+                            <mat-icon >edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" (click)="openDialogDetail(element.idTicket)">
+                            <mat-icon>info</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent">
+                            <mat-icon >delete</mat-icon>
+                        </button>
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
@@ -76,8 +81,7 @@
 
             </table>
         </div>
-        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"
-        [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
-    </mat-paginator>
+        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
+        </mat-paginator>
     </div>
 </div>

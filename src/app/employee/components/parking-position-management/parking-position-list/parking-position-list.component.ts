@@ -4,7 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl  } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ParkingPositionDetailComponent } from '../parking-position-detail/parking-position-detail.component'
 export interface PeriodicElement {
   position: string;
   floor: number;
@@ -31,7 +32,9 @@ export class ParkingPositionListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'floor', 'action'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
   pageIndex: number = 0;
   pageSize: number = 5;
   length: number;
@@ -57,4 +60,25 @@ export class ParkingPositionListComponent implements OnInit {
     console.log("thêm");
   }
 
-}
+  openDialogDetail(idTicket): void {
+    const dialogRef = this.dialog.open(ParkingPositionDetailComponent, {
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+    // this.ticketService.getTicketById(idTicket).subscribe(data =>{
+    //   console.log(data);
+    //   const dialogRef = this.dialog.open(DeleteManagementComponent, {
+    //     width: '300px',
+    //     data: {data: data},
+    //     disableClose: true
+    //   });
+    //   dialogRef.afterClosed().subscribe(result => {
+    //     console.log('The dialog was closed');
+    //     this.ngOnInit();
+    //   });
+    // })
+  }
+
