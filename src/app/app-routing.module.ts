@@ -55,6 +55,7 @@ const routes: Routes = [
           { path: '', component: MainScreenComponent },
           { path: 'month-management', component: CarStatisticComponent },
           { path: 'year-management', component: RevenueStatisticComponent },
+          { path: 'day-management', component: CarStatisticDaysComponent },
         ]
       },
 
