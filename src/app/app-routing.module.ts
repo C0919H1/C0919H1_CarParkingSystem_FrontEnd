@@ -35,7 +35,7 @@ import { CarStatisticComponent } from './employee/components/money-management/ca
 import { RevenueStatisticComponent } from './employee/components/money-management/revenue-statistic/revenue-statistic.component';
 import { ParkingPositionListComponent } from './employee/components/parking-position-management/parking-position-list/parking-position-list.component';
 import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
-import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days/car-statistic-days.component';
+import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days.component';
 
 const routes: Routes = [
   {
@@ -53,6 +53,7 @@ const routes: Routes = [
           { path: '', component: MainScreenComponent },
           { path: 'month-management', component: CarStatisticComponent },
           { path: 'year-management', component: RevenueStatisticComponent },
+          { path: 'day-management', component: CarStatisticDaysComponent },
         ]
       },
 
