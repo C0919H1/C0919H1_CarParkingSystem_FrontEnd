@@ -35,7 +35,7 @@ import { CarStatisticComponent } from './employee/components/money-management/ca
 import { RevenueStatisticComponent } from './employee/components/money-management/revenue-statistic/revenue-statistic.component';
 import { ParkingPositionListComponent } from './employee/components/parking-position-management/parking-position-list/parking-position-list.component';
 import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
-import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days/car-statistic-days.component';
+import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days.component';
 
 const routes: Routes = [
   {
@@ -51,7 +51,7 @@ const routes: Routes = [
         path: 'money-management', component: MainManagementComponent, children: [
           { path: 'asd', component: MainScreenComponent },
           { path: '', component: MainScreenComponent },
-          { path: 'month-management', component: CarStatisticComponent },
+          { path: 'month-management', component: CarStatisticDaysComponent },
           { path: 'year-management', component: RevenueStatisticComponent },
         ]
       },
@@ -87,6 +87,33 @@ const routes: Routes = [
     MaterialModule
   ],
   entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent],
-  declarations: [HeaderComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent,ParkingPositionListComponent, ParkingPositionDetailComponent, CarStatisticDaysComponent]
+  declarations: [
+    HeaderComponent, 
+    FooterComponent, 
+    MainComponent, 
+    PageNotFoundComponent, 
+    HomePageComponent, 
+    LoginComponent, 
+    TicketManagementComponent, 
+    SellManagementComponent, 
+    ExtensionManagementComponent, 
+    DeleteManagementComponent, 
+    EmployeeListComponent, 
+    ForgotPasswordDialogComponent, 
+    LogoutDialogComponent, 
+    CustomerListComponent, 
+    VehicleListComponent, 
+    CustomerDeletedComponent, 
+    CustomerEditComponent, 
+    TestLoginComponent, 
+    VehiclePickedComponent, 
+    TicketPickedComponent, 
+    MainManagementComponent, 
+    MainScreenComponent, 
+    CarStatisticComponent, 
+    RevenueStatisticComponent,
+    ParkingPositionListComponent, 
+    ParkingPositionDetailComponent, 
+    CarStatisticDaysComponent]
 })
 export class AppRoutingModule { }
