@@ -35,6 +35,7 @@ import { CarStatisticComponent } from './employee/components/money-management/ca
 import { RevenueStatisticComponent } from './employee/components/money-management/revenue-statistic/revenue-statistic.component';
 import { ParkingPositionListComponent } from './employee/components/parking-position-management/parking-position-list/parking-position-list.component';
 import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
+import { ParkingPositionAddComponent } from './employee/components/parking-position-management/parking-position-add/parking-position-add.component';
 
 const routes: Routes = [
   {
@@ -86,6 +87,6 @@ const routes: Routes = [
     MaterialModule
   ],
   entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent],
-  declarations: [HeaderComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent,ParkingPositionListComponent, ParkingPositionDetailComponent]
+  declarations: [HeaderComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent,ParkingPositionListComponent, ParkingPositionDetailComponent, ParkingPositionAddComponent]
 })
 export class AppRoutingModule { }

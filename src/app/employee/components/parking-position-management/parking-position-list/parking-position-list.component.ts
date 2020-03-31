@@ -6,6 +6,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ParkingPositionDetailComponent } from '../parking-position-detail/parking-position-detail.component'
+import { ParkingPositionAddComponent } from '../parking-position-add/parking-position-add.component';
 export interface PeriodicElement {
   position: string;
   floor: number;
@@ -57,6 +58,12 @@ export class ParkingPositionListComponent implements OnInit {
   }
 
   addPosition(){
+    const dialogRef = this.dialog.open(ParkingPositionAddComponent, {
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
     console.log("thêm");
   }
 
