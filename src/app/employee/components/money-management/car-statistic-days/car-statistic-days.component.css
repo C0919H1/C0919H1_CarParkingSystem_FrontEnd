@@ -1,0 +1,28 @@
+.container {
+    text-align: left;
+    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    margin-top: 1rem;
+    /* border: 2px solid rgb(201, 194, 194) !important; */
+    /* border-radius: 1px !important; */
+    /* padding: 10px 5px; */
+}
+
+h4 {
+    font-size: 30px !important;
+    margin-bottom: 7px;
+}
+
+.select {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    
+}
+
+.select div {
+    display: inline-block;
+    width: 500px;
+	min-height: 50px;
+	height: auto;
+}
