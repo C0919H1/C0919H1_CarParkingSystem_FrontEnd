@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ParkingPositionDetailComponent } from '../parking-position-detail/parking-position-detail.component'
 import { ParkingPositionAddComponent } from '../parking-position-add/parking-position-add.component';
+import { ParkingPositionEditComponent } from '../parking-position-edit/parking-position-edit.component';
+
 export interface PeriodicElement {
   position: string;
   floor: number;
@@ -56,6 +58,7 @@ export class ParkingPositionListComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 
   addPosition(){
     const dialogRef = this.dialog.open(ParkingPositionAddComponent, {
@@ -67,6 +70,7 @@ export class ParkingPositionListComponent implements OnInit {
     console.log("thêm");
   }
 
+  
   openDialogDetail(idTicket): void {
     const dialogRef = this.dialog.open(ParkingPositionDetailComponent, {
       width: '700px',
@@ -86,6 +90,15 @@ export class ParkingPositionListComponent implements OnInit {
     //     console.log('The dialog was closed');
     //     this.ngOnInit();
     //   });
+    
     // })
+    openDialog() : void {
+      console.log("thanh công chưa");
+      const dialogRef = this.dialog.open(ParkingPositionEditComponent, {
+        width: '500px',
+        data: { data: this.dataSource },
+        disableClose: true
+      });
+    }
   }
 
