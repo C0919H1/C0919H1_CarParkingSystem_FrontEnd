@@ -35,7 +35,10 @@ import { CarStatisticComponent } from './employee/components/money-management/ca
 import { RevenueStatisticComponent } from './employee/components/money-management/revenue-statistic/revenue-statistic.component';
 import { ParkingPositionListComponent } from './employee/components/parking-position-management/parking-position-list/parking-position-list.component';
 import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
+import { ParkingPositionAddComponent } from './employee/components/parking-position-management/parking-position-add/parking-position-add.component';
 import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days.component';
+import { ParkingPositionEditComponent } from './employee/components/parking-position-management/parking-position-edit/parking-position-edit.component';
+
 
 const routes: Routes = [
   {
@@ -53,6 +56,7 @@ const routes: Routes = [
           { path: '', component: MainScreenComponent },
           { path: 'month-management', component: CarStatisticDaysComponent },
           { path: 'year-management', component: RevenueStatisticComponent },
+          { path: 'day-management', component: CarStatisticDaysComponent },
         ]
       },
 
@@ -86,7 +90,7 @@ const routes: Routes = [
     MatDatepicker,
     MaterialModule
   ],
-  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent],
+  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent,ParkingPositionEditComponent],
   declarations: [
     HeaderComponent, 
     FooterComponent, 
@@ -114,6 +118,9 @@ const routes: Routes = [
     RevenueStatisticComponent,
     ParkingPositionListComponent, 
     ParkingPositionDetailComponent, 
-    CarStatisticDaysComponent]
+    CarStatisticDaysComponent,
+    ParkingPositionAddComponent,
+    ParkingPositionEditComponent]
+
 })
 export class AppRoutingModule { }

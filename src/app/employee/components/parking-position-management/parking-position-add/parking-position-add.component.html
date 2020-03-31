@@ -1,0 +1,19 @@
+<div class="example-container">
+    <h1>Thêm vị trí bãi đổ xe</h1>
+    <hr>
+    <mat-form-field appearance="fill">
+      <mat-label>Tên vị trí đỗ xe</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Tầng</mat-label>
+      <mat-select>
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+      </mat-select>
+    </mat-form-field>
+   <button mat-button style="color: blue;" (click)="edit()">Edit</button>
+   <button mat-button  style="color: red;" mat-dialog-close>Hủy</button>
+  </div>
