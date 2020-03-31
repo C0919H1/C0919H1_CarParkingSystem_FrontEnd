@@ -43,4 +43,3 @@ export class CarStatisticDaysComponent implements OnInit {
   }
 
 }
-

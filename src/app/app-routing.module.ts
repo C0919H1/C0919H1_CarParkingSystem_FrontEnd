@@ -121,6 +121,5 @@ const routes: Routes = [
     CarStatisticDaysComponent,
     ParkingPositionAddComponent,
     ParkingPositionEditComponent]
-
 })
 export class AppRoutingModule { }
