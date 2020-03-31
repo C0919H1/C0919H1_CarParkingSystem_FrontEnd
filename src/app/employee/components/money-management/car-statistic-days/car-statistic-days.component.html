@@ -1,0 +1,32 @@
+<form class="container">
+    <h4>Thống Kê</h4>
+    <div class="select">
+        <div class="select-item">
+            <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Ngày Bắt Đầu" required>
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="select-datetime">
+            <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker1" placeholder="Ngày Kết Thúc" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="chart">
+        <div style="display: block">
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <p>Doanh Thu Hôm Nay : </p>
+        <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+    </div>
+</form>
