@@ -5,4 +5,9 @@
 
 .align-middle {
     vertical-align: middle;
+    font-size: 20px;
+}
+
+.name {
+    color: gainsboro;
 }
