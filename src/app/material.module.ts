@@ -19,6 +19,7 @@ import { SellManagementComponent } from './employee/components/ticket-management
 import { VehiclePickedComponent } from './employee/components/ticket-management/vehicle-picked/vehicle-picked.component'
 import { from } from 'rxjs';
 import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
+import { ParkingPositionAddComponent } from './employee/components/parking-position-management/parking-position-add/parking-position-add.component';
 
 
 const MaterialModules = [
@@ -66,7 +67,8 @@ const MaterialModules = [
     ExtensionManagementComponent,
     SellManagementComponent,
     VehiclePickedComponent,
-    ParkingPositionDetailComponent
+    ParkingPositionDetailComponent,
+    ParkingPositionAddComponent
   ]
   
 })
