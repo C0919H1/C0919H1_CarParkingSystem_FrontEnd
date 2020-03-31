@@ -19,6 +19,9 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
+        <div class="select-btn">
+            <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+        </div>
     </div>
     <div class="chart">
         <div style="display: block">
@@ -26,7 +29,7 @@
                 [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
         </div>
-        <p>Doanh Thu Hôm Nay : </p>
-        <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+        <p class="tittle">Biểu đồ thống kê xe ra/vào và doanh thu theo ngày.</p>
+        <p class="static">Doanh Thu Hôm Nay : </p>
     </div>
 </form>
