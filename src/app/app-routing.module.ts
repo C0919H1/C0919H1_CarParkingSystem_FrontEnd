@@ -34,6 +34,10 @@ import { MainScreenComponent } from './employee/components/money-management/main
 import { CarStatisticComponent } from './employee/components/money-management/car-statistic/car-statistic.component';
 import { RevenueStatisticComponent } from './employee/components/money-management/revenue-statistic/revenue-statistic.component';
 import { ParkingPositionListComponent } from './employee/components/parking-position-management/parking-position-list/parking-position-list.component';
+import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
+import { ParkingPositionAddComponent } from './employee/components/parking-position-management/parking-position-add/parking-position-add.component';
+import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days.component';
+import { ParkingPositionEditComponent } from './employee/components/parking-position-management/parking-position-edit/parking-position-edit.component';
 
 
 const routes: Routes = [
@@ -44,13 +48,15 @@ const routes: Routes = [
       { path: 'ticket-management', component: TicketManagementComponent },
       { path: 'employee-list', component: EmployeeListComponent },
       { path: 'customer-list', component: CustomerListComponent },
+     
 
       {
         path: 'money-management', component: MainManagementComponent, children: [
           { path: 'asd', component: MainScreenComponent },
           { path: '', component: MainScreenComponent },
-          { path: 'month-management', component: CarStatisticComponent },
+          { path: 'month-management', component: CarStatisticDaysComponent },
           { path: 'year-management', component: RevenueStatisticComponent },
+          { path: 'day-management', component: CarStatisticDaysComponent },
         ]
       },
 

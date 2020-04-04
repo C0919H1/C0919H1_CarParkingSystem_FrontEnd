@@ -11,8 +11,7 @@
         <mat-grid-tile>
             <mat-form-field>
                 <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
-                <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
-                    (click)="filter.value=''; applyFilter('');">
+                <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value" (click)="filter.value=''; applyFilter('');">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>

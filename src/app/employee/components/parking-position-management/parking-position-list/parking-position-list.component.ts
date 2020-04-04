@@ -58,6 +58,7 @@ export class ParkingPositionListComponent implements OnInit {
   ngOnInit() {
     this.getAllParkingPosition();
   }
+  
 
   addPosition() {
     console.log("thêm");
