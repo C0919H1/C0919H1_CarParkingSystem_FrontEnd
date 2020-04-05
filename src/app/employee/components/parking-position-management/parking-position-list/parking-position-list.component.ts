@@ -1,27 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/table';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl  } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ParkingPositionDetailComponent } from '../parking-position-detail/parking-position-detail.component'
-import { ParkingPositionAddComponent } from '../parking-position-add/parking-position-add.component';
-import { ParkingPositionEditComponent } from '../parking-position-edit/parking-position-edit.component';
-
-export interface PeriodicElement {
-  position: string;
-  floor: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: "A-1", floor: 1},
-  {position: "A-2", floor: 1},
-  {position: "A-3", floor: 1},
-  {position: "A-4", floor: 1},
-  {position: "A-5", floor: 1},
-  {position: "A-6", floor: 1},
-]
+import { ParkingPosition } from '../../../../models/parking-position';
+import { MatDialog } from '@angular/material/dialog';
+import { ParkingPositionService } from 'src/app/services/parking-position.service';
 
 @Component({
   selector: 'app-parking-position-list',
@@ -32,17 +17,24 @@ export class ParkingPositionListComponent implements OnInit {
 
   formParkingPosition: FormGroup;
   formFloor: FormGroup;
-  displayedColumns: string[] = ['position', 'floor', 'action'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  public flag = false;
+  public floor = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(
-    private dialog: MatDialog
+    public dialog: MatDialog,
+    public formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private parkingPositionService: ParkingPositionService
   ) { }
   pageIndex: number = 0;
   pageSize: number = 5;
   length: number;
   pageEvent: PageEvent;
   filterValue: string = "";
+  displayedColumns: string[] = ['position', 'floor', 'action'];
+  dataSource: MatTableDataSource<ParkingPosition>;
 
   public handlePage(event?: PageEvent) {
     this.pageIndex = event.pageIndex;
@@ -53,52 +45,56 @@ export class ParkingPositionListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.filterValue = filterValue.trim();
-    this.ngOnInit()
+    this.ngOnInit();
+  }
+
+  chooseFloor(floor: number) {
+    this.flag = true;
+    this.floor = floor;
+    console.log(floor);
+    this.ngOnInit();
   }
 
   ngOnInit() {
+    this.getAllParkingPosition();
   }
   
 
-  addPosition(){
-    const dialogRef = this.dialog.open(ParkingPositionAddComponent, {
-      width: '700px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
+  addPosition() {
     console.log("thêm");
   }
 
-  
-  openDialogDetail(idTicket): void {
-    const dialogRef = this.dialog.open(ParkingPositionDetailComponent, {
-      width: '700px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
-    // this.ticketService.getTicketById(idTicket).subscribe(data =>{
-    //   console.log(data);
-    //   const dialogRef = this.dialog.open(DeleteManagementComponent, {
-    //     width: '300px',
-    //     data: {data: data},
-    //     disableClose: true
-    //   });
-    //   dialogRef.afterClosed().subscribe(result => {
-    //     console.log('The dialog was closed');
-    //     this.ngOnInit();
-    //   });
-    
-    // })
-    openDialog() : void {
-      console.log("thanh công chưa");
-      const dialogRef = this.dialog.open(ParkingPositionEditComponent, {
-        width: '500px',
-        data: { data: this.dataSource },
-        disableClose: true
-      });
+  getAllParkingPosition() {
+    if (!this.flag) {
+      this.parkingPositionService.getAllParkingPosition(this.pageIndex, this.pageSize, this.filterValue).subscribe(
+        data => {
+          this.dataSource = data.content;
+          this.length = data.totalElements;
+          console.log(data.totalElements);
+          console.log(this.dataSource);
+        },
+        error => {
+          if (error.status == 401) {
+            alert("Bạn không có quyền vào trang này.Mời bạn đăng nhập.")
+            this.router.navigateByUrl('/login')
+          }
+        }
+      );
+    } else {
+      this.parkingPositionService.getAllParkingPositionByFloor(this.floor, this.pageIndex, this.pageSize, this.filterValue).subscribe(
+        data => {
+          this.dataSource = data.content;
+          this.length = data.totalElements;
+          console.log(data.totalElements);
+          console.log(this.dataSource);
+        },
+        error => {
+          if (error.status == 401) {
+            alert("Bạn không có quyền vào trang này.Mời bạn đăng nhập.")
+            this.router.navigateByUrl('/login')
+          }
+        }
+      );
     }
-  }
-
+  };
+}
