@@ -19,4 +19,8 @@ export class ParkingPositionService {
   getAllParkingPositionByFloor(floor, curentPage, size, search): Observable<any> {
     return this.http.get(this.API + '?page=' + curentPage + '&size=' + size + '&search=' + search + '&floor=' + floor);
   }
+
+  getParkingPositionById(id): Observable<any> {
+    return this.http.get(this.API + '/' + id)
+  }
 }
