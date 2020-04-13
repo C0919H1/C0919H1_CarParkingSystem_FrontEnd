@@ -7,7 +7,9 @@ import { MatTableDataSource } from '@angular/material';
 import { ParkingPosition } from '../../../../models/parking-position';
 import { MatDialog } from '@angular/material/dialog';
 import { ParkingPositionService } from 'src/app/services/parking-position.service';
+import { ParkingPositionDetailComponent } from '../parking-position-detail/parking-position-detail.component';
 import { ParkingFloorService } from 'src/app/services/parking-floor.service';
+
 
 @Component({
   selector: 'app-parking-position-list',
@@ -115,5 +117,19 @@ export class ParkingPositionListComponent implements OnInit {
     }
   };
 
-
+  openDialogDetailPosition(id): void {
+    this.parkingPositionService.getParkingPositionById(id).subscribe(data =>{
+      console.log(data);
+      const dialogRef = this.dialog.open(ParkingPositionDetailComponent, {
+        width: '1000px',
+        height: '500px',
+        data: {positionData: data},
+        disableClose: false
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
+    })
+  }
 }

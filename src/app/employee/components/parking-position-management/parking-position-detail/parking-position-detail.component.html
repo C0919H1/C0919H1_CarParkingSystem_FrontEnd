@@ -8,18 +8,21 @@
     <div style="width: 300px;margin-bottom: 30px;">
         <mat-list role="list">
             <mat-list-item role="listitem">
-                <span class="name">Vị trí đỗ</span>
-                <span style="margin-left: 177px;">A-12</span>
+                <div class="detail">
+                    <span class="name">Vị trí đỗ</span>
+                    <span>{{positon}}</span>
+                </div>
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item role="listitem">
-                <span class="name">Vị Trí</span>
-                <span style="margin-left: 183px;">Tầng 1</span>
+                <div class="detail">
+                    <span class="name">Vị Trí</span>
+                    <span>{{floor}}</span>
+                </div>
             </mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>
     </div>
-
 
     <div>
         <div class="container">
@@ -32,18 +35,24 @@
         <div class="col-6">
             <mat-list role="list">
                 <mat-list-item role="listitem">
-                    <span class="name">Họ và tên</span>
-                    <span style="margin-left: 108px;">Nguyễn Văn A</span>
+                    <div class="detail">
+                        <span class="name">Họ và tên</span>
+                        <span>{{customerName}}</span>
+                    </div>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item role="listitem">
-                    <span class="name">Email</span>
-                    <span style="margin-left: 81px;">something@gmail.com</span>
+                    <div class="detail">
+                        <span class="name">Email</span>
+                        <span>{{email}}</span>
+                    </div>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item role="listitem">
-                    <span class="name">Loại xe</span>
-                    <span style="margin-left: 143px;">Honda Civic</span>
+                    <div class="detail">
+                        <span class="name">Loại xe</span>
+                        <span>{{vehicleType}}</span>
+                    </div>
                 </mat-list-item>
                 <mat-divider></mat-divider>
             </mat-list>
@@ -51,18 +60,24 @@
         <div class="col-6">
             <mat-list role="list">
                 <mat-list-item role="listitem">
-                    <span class="name">Ngày sinh</span>
-                    <span style="margin-left: 123px;">12/12/1999</span>
+                    <div class="detail">
+                        <span class="name">Ngày sinh</span>
+                        <span>{{dateOfBirth | date: 'dd/MM/yyyy'}}</span>
+                    </div>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item role="listitem">
-                    <span class="name">Số điện thoại</span>
-                    <span style="margin-left: 80px;">0905050905</span>
+                    <div class="detail">
+                        <span class="name">Số điện thoại</span>
+                        <span>{{phoneNumber}}</span>
+                    </div>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item role="listitem">
-                    <span class="name">Biển số</span>
-                    <span style="margin-left: 146px;">43A-4444</span>
+                    <div class="detail">
+                        <span class="name">Biển số</span>
+                        <span>{{licensePlate}}</span>
+                    </div>
                 </mat-list-item>
                 <mat-divider></mat-divider>
             </mat-list>
