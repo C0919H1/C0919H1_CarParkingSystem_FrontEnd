@@ -50,7 +50,7 @@ const routes: Routes = [
       { path: 'ticket-management', component: TicketManagementComponent },
       { path: 'employee-list', component: EmployeeListComponent },
       { path: 'customer-list', component: CustomerListComponent },
-     
+
 
       {
         path: 'money-management', component: MainManagementComponent, children: [
