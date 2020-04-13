@@ -8,6 +8,8 @@ import { ParkingPosition } from '../../../../models/parking-position';
 import { MatDialog } from '@angular/material/dialog';
 import { ParkingPositionService } from 'src/app/services/parking-position.service';
 import { ParkingPositionDetailComponent } from '../parking-position-detail/parking-position-detail.component';
+import { ParkingFloorService } from 'src/app/services/parking-floor.service';
+
 
 @Component({
   selector: 'app-parking-position-list',
@@ -16,6 +18,7 @@ import { ParkingPositionDetailComponent } from '../parking-position-detail/parki
 })
 export class ParkingPositionListComponent implements OnInit {
 
+  private floors;
   formParkingPosition: FormGroup;
   formFloor: FormGroup;
   public flag = false;
@@ -27,14 +30,15 @@ export class ParkingPositionListComponent implements OnInit {
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private parkingPositionService: ParkingPositionService
+    private parkingPositionService: ParkingPositionService,
+    private parkingFloorService: ParkingFloorService
   ) { }
   pageIndex: number = 0;
   pageSize: number = 5;
   length: number;
   pageEvent: PageEvent;
   filterValue: string = "";
-  displayedColumns: string[] = ['position', 'floor', 'action'];
+  displayedColumns: string[] = ['STT', 'position', 'floor', 'status', 'action'];
   dataSource: MatTableDataSource<ParkingPosition>;
 
   public handlePage(event?: PageEvent) {
@@ -49,24 +53,38 @@ export class ParkingPositionListComponent implements OnInit {
     this.ngOnInit();
   }
 
-  chooseFloor(floor: number) {
+  chooseFloor(floor) {
     this.flag = true;
-    this.floor = floor;
+    if (floor === 0) {
+      this.floor = 0;
+    } else {
+      this.floor = floor.idParkingFloor;
+    }
     console.log(floor);
-    this.ngOnInit();
+    this.getAllParkingPosition();
   }
 
   ngOnInit() {
     this.getAllParkingPosition();
+    this.formFloor = this.formBuilder.group({
+      idParkingFloor: [''],
+      nameFloor: [''],
+      amount: ['']
+    });
+    this.activatedRoute.params.subscribe(data => {
+      this.parkingFloorService.getAllFloor().subscribe(data => {
+        this.floors = data;
+      })
+    });
   }
-  
+
 
   addPosition() {
     console.log("thêm");
   }
 
   getAllParkingPosition() {
-    if (!this.flag) {
+    if (!this.flag || this.floor === 0) {
       this.parkingPositionService.getAllParkingPosition(this.pageIndex, this.pageSize, this.filterValue).subscribe(
         data => {
           this.dataSource = data.content;
