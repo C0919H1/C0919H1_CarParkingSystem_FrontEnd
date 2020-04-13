@@ -92,7 +92,39 @@ const routes: Routes = [
     MatDatepicker,
     MaterialModule
   ],
-  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent, ParkingPositionEditComponent],
-  declarations: [HeaderComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent, ParkingPositionListComponent, ParkingPositionDetailComponent, ParkingPositionAddComponent, ParkingPositionEditComponent, CarStatisticDaysComponent, VehicleInOutComponent, VehiclePickComponent]
+  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent,ParkingPositionEditComponent],
+  declarations: [
+    HeaderComponent, 
+    FooterComponent, 
+    MainComponent, 
+    PageNotFoundComponent, 
+    HomePageComponent, 
+    LoginComponent, 
+    TicketManagementComponent, 
+    SellManagementComponent, 
+    ExtensionManagementComponent, 
+    DeleteManagementComponent, 
+    EmployeeListComponent, 
+    ForgotPasswordDialogComponent, 
+    LogoutDialogComponent, 
+    CustomerListComponent, 
+    VehicleListComponent, 
+    CustomerDeletedComponent, 
+    CustomerEditComponent, 
+    TestLoginComponent, 
+    VehiclePickedComponent, 
+    TicketPickedComponent, 
+    MainManagementComponent, 
+    MainScreenComponent, 
+    CarStatisticComponent, 
+    RevenueStatisticComponent,
+    ParkingPositionListComponent, 
+    ParkingPositionDetailComponent, 
+    CarStatisticDaysComponent,
+    ParkingPositionAddComponent,
+    ParkingPositionEditComponent,
+    VehicleInOutComponent,
+    VehiclePickComponent]
+
 })
 export class AppRoutingModule { }
