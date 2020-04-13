@@ -85,6 +85,13 @@ h4 {
     text-align: center !important;
 
 }
+
+.mat-column-status{
+    width: 15% !important;
+    text-align: center !important;
+
+}
+
 .mat-column-action{
     width: 20% !important;
     text-align: center;
