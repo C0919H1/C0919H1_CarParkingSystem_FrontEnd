@@ -125,5 +125,6 @@ const routes: Routes = [
     ParkingPositionEditComponent,
     VehicleInOutComponent,
     VehiclePickComponent]
+
 })
 export class AppRoutingModule { }
