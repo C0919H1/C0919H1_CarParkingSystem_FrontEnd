@@ -24,9 +24,7 @@
     </div>
     <div class="chart">
         <div style="display: block">
-            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
         </div>
         <p class="tittle">Biểu đồ thống kê xe ra/vào và doanh thu theo ngày.</p>
     </div>

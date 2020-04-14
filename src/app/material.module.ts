@@ -19,7 +19,8 @@ import { SellManagementComponent } from './employee/components/ticket-management
 import { VehiclePickedComponent } from './employee/components/ticket-management/vehicle-picked/vehicle-picked.component'
 import { from } from 'rxjs';
 import { ParkingPositionDetailComponent } from './employee/components/parking-position-management/parking-position-detail/parking-position-detail.component';
-
+import { ParkingPositionAddComponent } from './employee/components/parking-position-management/parking-position-add/parking-position-add.component';
+import { VehiclePickComponent } from './employee/components/vehicle-management/vehicle-pick/vehicle-pick.component'
 
 const MaterialModules = [
   MatProgressBarModule,
@@ -66,7 +67,9 @@ const MaterialModules = [
     ExtensionManagementComponent,
     SellManagementComponent,
     VehiclePickedComponent,
-    ParkingPositionDetailComponent
+    ParkingPositionDetailComponent,
+    ParkingPositionAddComponent,
+    VehiclePickComponent
   ]
   
 })

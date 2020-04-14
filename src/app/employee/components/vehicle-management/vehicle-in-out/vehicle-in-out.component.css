@@ -1,0 +1,95 @@
+.mat-card-image {
+    margin: 0 0 0 0 !important;
+    width: 100% !important;
+}
+
+.mat-card {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    border-radius: 0px !important;
+    padding: 0 0 0 0 !important;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+.container {
+    float: left;
+    text-align: center;
+    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    /* border: 2px solid rgb(201, 194, 194) !important; */
+    /* border-radius: 1px !important; */
+    /* padding: 10px 5px; */
+}
+
+.container-table {
+    overflow-y: scroll;
+    height: 295px;
+}
+
+.basic-container {
+    margin-top: 20px !important;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}
+
+
+/* Tiêu đề */
+
+h4 {
+    font-size: 30px !important;
+}
+
+h5 {
+    margin-bottom: 0px;
+}
+
+
+/* Thêm mới*/
+
+.add {
+    margin-right: 15px;
+    border: 1px solid rgb(238, 237, 237);
+    background-color: rgb(247, 247, 247) !important;
+    border-radius: 10px;
+}
+
+
+/* Tìm kiếm */
+
+.search {
+    margin-left: 65%;
+    margin-right: 10%;
+}
+
+
+/* Trường td */
+
+.mat-header-cell {
+    color: black !important;
+    font-size: 14px !important;
+    font-weight: bolder !important;
+    text-align: center;
+}
+
+.mat-paginator {
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 90%;
+}
+
+td {
+    padding-right: 8px;
+}
