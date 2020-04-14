@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+declare var $: any;
+
 @Component({
   selector: 'app-revenue-statistic',
   templateUrl: './revenue-statistic.component.html',
@@ -12,13 +14,24 @@ export class RevenueStatisticComponent implements OnInit {
   isOpen = false;
 
 
-  public data: Array<any> =[45, 37, 60, 34, 46, 45, 65, 45, 60, 45, 32, 65];
+  public data: Array<any> = [45, 37, 60, 34, 46, 45, 65, 45, 60, 45, 32, 65];
 
 
   constructor() { }
 
   ngOnInit() {
+    $("#datepickerFrom").datepicker({
+      format: "yyyy",
+      viewMode: "years",
+      minViewMode: "years"
+    });
+    $("#datepickerTo").datepicker({
+      format: "yyyy",
+      viewMode: "years",
+      minViewMode: "years"
+    });
   }
+
   barChartOptions: ChartOptions = {
     responsive: true,
   };

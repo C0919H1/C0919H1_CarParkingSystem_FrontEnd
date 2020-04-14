@@ -1,3 +1,7 @@
 .chart-wrapper{
     width: 88% !important;
 } 
+.ui-datepicker-calendar {
+    display: none;
+ }
+ 

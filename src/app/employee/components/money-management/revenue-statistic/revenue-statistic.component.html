@@ -1,21 +1,7 @@
-<div >
-
-    <!-- Tìm kiếm -->
-    <!-- <input
-    type="text"
-    class="form-control input-sm"
-    id="dob"
-    name="dob"
-    oh-validate-model-state
-    ng-model-options="formModelOptions"
-    ng-model="dob"
-    max-date="datepickerEighteen"
-    datepicker-mode="'year'"
-    datepicker-popup="dd-MM-yyyy"
-    is-open="dobOpened"
-    required
-    readonly="readonly" /> -->
-    <!-- Biểu đồ -->
+<div>
+    <input type="text" id="datepickerFrom" placeholder="From"/>
+    <input type="text" id="datepickerTo" placeholder="To"/>
+   
     <div class="chart-wrapper">
         <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
             [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType" [colors]="barChartColors">
@@ -23,9 +9,3 @@
     </div>
 
 </div>
-
-
-
-
-
-

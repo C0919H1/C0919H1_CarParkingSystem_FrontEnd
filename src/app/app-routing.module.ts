@@ -34,7 +34,6 @@ import { MainScreenComponent } from './employee/components/money-management/main
 import { CarStatisticComponent } from './employee/components/money-management/car-statistic/car-statistic.component';
 import { RevenueStatisticComponent } from './employee/components/money-management/revenue-statistic/revenue-statistic.component';
 import { ParkingPositionListComponent } from './employee/components/parking-position-management/parking-position-list/parking-position-list.component';
-
 const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
