@@ -7,7 +7,9 @@ import * as firebase from "firebase";
 import { AccountService } from '../../../service/account.service';
 import { error } from 'util';
 import { AuthJwtService } from 'src/app/auth/auth-jwt.service';
+import { SMTP } from '../../../../assets/myjs/smtp.js';
 
+declare let Email: any;
 
 @Component({
   selector: 'app-forgot-password-dialog',
@@ -19,6 +21,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
   listNotify: any = "";
   email: any = "";
 
+
   constructor(
     public dialogRef: MatDialogRef<ForgotPasswordDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -26,9 +29,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
     private router: Router,
     private authJwtService: AuthJwtService
 
-  ) {
-    
-   }
+  ) { }
 
   ngOnInit() {
   }
@@ -43,11 +44,6 @@ export class ForgotPasswordDialogComponent implements OnInit {
       console.log(data)
       this.listNotify = "Vui lòng kiểm tra tin nhắn email để cài lại mật khẩu";
       this.email = this.data.email;
-      firebase.auth()
-        .sendPasswordResetEmail(this.email)
-        .then(function () {
-          console.log("Success");
-        })
     },
       error => {
         this.listNotify = "Username không tồn tại trong hệ thống";
@@ -55,16 +51,30 @@ export class ForgotPasswordDialogComponent implements OnInit {
     );
   }
 
-  forgot() {
-    firebase.auth()
-      .sendPasswordResetEmail(this.email)
-      .then(function () {
-        console.log("Success");
-      })
-      .catch(function (error) {
-        //An error happend
-        console.log("Error");
-      });
+  // forgot() {
+  //   firebase.auth()
+  //     .sendPasswordResetEmail(this.email)
+  //     .then(function () {
+  //       console.log("Success");
+  //     })
+  //     .catch(function (error) {
+  //       //An error happend
+  //       console.log("Error");
+  //     });
+  // }
+  onSubmit() {
+
+    Email.send({
+      Host: 'smtp.elasticemail.com',
+      Username: 'carparkingc0919@gmail.com',
+      Password: 'F5E8C018F1660C4E1B1255CE96D5B7F5D380',
+      To: 'nguyenvthienduy@gmail.com',
+      From: 'carparkingc0919@gmail.com',
+      Subject: 'test mail',
+      Body: '<i>This is sent as a feedback from my resume page.</i> <br/> <i>Link: http://localhost:4200/resetPassword/employeeId</i><br><br> <b>~End of Message.~</b> '
+    }).then(message => {
+      alert(message);
+    });
   }
 
 }
