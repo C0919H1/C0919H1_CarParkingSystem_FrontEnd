@@ -171,8 +171,9 @@ export class CustomerListComponent implements OnInit {
     }
     this.customer[index].create = true;
     this.customerService.getCustomerById(id).subscribe(data => {
-      console.log(data);
+    
       this.formCreateCustomer.patchValue(data);
+      console.log(this.formCreateCustomer.value)
 
       // String date = datepicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
