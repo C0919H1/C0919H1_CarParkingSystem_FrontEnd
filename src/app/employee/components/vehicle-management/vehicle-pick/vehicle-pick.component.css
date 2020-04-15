@@ -1,0 +1,73 @@
+.mat-table {
+    width: 100%;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    /* border: 2px solid rgb(201, 194, 194) !important; */
+    /* border-radius: 1px !important; */
+    /* padding: 10px 5px; */
+}
+
+.container-table {
+    overflow-y: scroll;
+    height: 295px;
+}
+
+.basic-container {
+    margin-top: 20px !important;
+}
+
+
+/* Tiêu đề */
+
+h4 {
+    font-size: 30px !important;
+    margin-left: 10%;
+}
+
+
+/* Thêm mới*/
+
+.add {
+    margin-right: 15px;
+    border: 1px solid rgb(238, 237, 237);
+    background-color: rgb(247, 247, 247) !important;
+    border-radius: 10px;
+}
+
+
+/* Tìm kiếm */
+
+.search {
+    margin-left: 65%;
+    margin-right: 10%;
+}
+
+
+/* Trường td */
+
+.mat-form-field {
+    font-size: 14px !important;
+    /* width: 100%; */
+}
+
+.example-full-width {
+    border: 2px solid black;
+    border-radius: 2px !important;
+}
+
+.mat-header-cell {
+    color: black !important;
+    font-size: 14px !important;
+    font-weight: bolder !important;
+    text-align: center;
+}
+
+.mat-paginator {
+    font-size: 14px;
+    font-weight: bolder;
+}
