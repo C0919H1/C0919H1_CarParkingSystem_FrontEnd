@@ -29,7 +29,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/myjs/login.js"
+              "src/assets/myjs/smtp.js"
             ]
           },
           "configurations": {
