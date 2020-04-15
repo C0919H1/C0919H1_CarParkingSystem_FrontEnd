@@ -38,6 +38,7 @@ import { ParkingPositionDetailComponent } from './employee/components/parking-po
 import { ParkingPositionAddComponent } from './employee/components/parking-position-management/parking-position-add/parking-position-add.component';
 import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days.component';
 import { ParkingPositionEditComponent } from './employee/components/parking-position-management/parking-position-edit/parking-position-edit.component';
+import { PositionChartComponent } from './employee/components/parking-position-management/position-chart/position-chart.component';
 
 
 const routes: Routes = [
@@ -90,7 +91,7 @@ const routes: Routes = [
     MatDatepicker,
     MaterialModule
   ],
-  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent],
-  declarations: [HeaderComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent, ParkingPositionListComponent]
+  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent,ParkingPositionEditComponent,PositionChartComponent],
+  declarations: [HeaderComponent,CarStatisticDaysComponent,ParkingPositionEditComponent,ParkingPositionAddComponent,ParkingPositionDetailComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent, ParkingPositionListComponent, PositionChartComponent]
 })
 export class AppRoutingModule { }

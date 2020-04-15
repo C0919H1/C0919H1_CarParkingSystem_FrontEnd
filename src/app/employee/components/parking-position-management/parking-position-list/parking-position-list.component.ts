@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material';
 import { ParkingPosition } from '../../../../models/parking-position';
 import { MatDialog } from '@angular/material/dialog';
 import { ParkingPositionService } from 'src/app/services/parking-position.service';
+import { ParkingPositionEditComponent } from '../parking-position-edit/parking-position-edit.component';
+import { PositionChartComponent } from '../position-chart/position-chart.component';
 
 @Component({
   selector: 'app-parking-position-list',
@@ -26,7 +28,7 @@ export class ParkingPositionListComponent implements OnInit {
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private parkingPositionService: ParkingPositionService
+    public parkingPositionService: ParkingPositionService
   ) { }
   pageIndex: number = 0;
   pageSize: number = 5;
@@ -68,10 +70,10 @@ export class ParkingPositionListComponent implements OnInit {
     if (!this.flag) {
       this.parkingPositionService.getAllParkingPosition(this.pageIndex, this.pageSize, this.filterValue).subscribe(
         data => {
+
           this.dataSource = data.content;
+          console.log(this.dataSource)
           this.length = data.totalElements;
-          console.log(data.totalElements);
-          console.log(this.dataSource);
         },
         error => {
           if (error.status == 401) {
@@ -85,8 +87,6 @@ export class ParkingPositionListComponent implements OnInit {
         data => {
           this.dataSource = data.content;
           this.length = data.totalElements;
-          console.log(data.totalElements);
-          console.log(this.dataSource);
         },
         error => {
           if (error.status == 401) {
@@ -97,4 +97,28 @@ export class ParkingPositionListComponent implements OnInit {
       );
     }
   };
+ 
+  openDialogParkingPosition(id : number) : void {
+    this.parkingPositionService.getParkingPositionById(id).subscribe(dataParking=>{
+      const dialogRef = this.dialog.open(ParkingPositionEditComponent, {
+        width : '700px',
+        data : {data : dataParking},
+        disableClose : true
+      });
+   
+      dialogRef.afterClosed().subscribe(()=>{
+       this.getAllParkingPosition();
+        });
+    })
+  }
+  openDialogPositionChart(): void{
+    const dialogRef = this.dialog.open(PositionChartComponent, {
+      width : "900px",
+      height : "700px"
+      
+    });
+    dialogRef.afterClosed().subscribe(()=>{
+      this.getAllParkingPosition();
+       });
+  }
 }
