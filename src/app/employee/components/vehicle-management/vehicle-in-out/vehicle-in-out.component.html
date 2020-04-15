@@ -69,55 +69,39 @@
                     </td>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Số CMND" disabled formControlName='indentity'>
+                            <input matInput placeholder="Email" disabled formControlName='email'>
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Loại Xe" disabled formControlName='typeOfVehicle'>
+                            <input matInput placeholder="Loại Xe" disabled formControlName='typeVehicle'>
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Biển Số" disabled formControlName='licensePlate'>
+                            <input matInput placeholder="Biển Số" disabled formControlName='idVehicle'>
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <mat-label>Loại Vé</mat-label>
-                            <mat-select formControlName='typeOfTicket' required (selectionChange)="getParkingPosition($event.value)">
-                                <mat-option>--</mat-option>
-                                <mat-option *ngFor="let ticket of ticketTypes" [value]="ticket">
-                                    {{ticket.nameTicketType}}
-                                </mat-option>
-                            </mat-select>
+                            <input matInput placeholder="Tầng" disabled formControlName='nameFloor'>
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <mat-label>Vị Trí Đỗ</mat-label>
-                            <mat-select formControlName="parkingPosition" required (selectionChange)="setParkingPosition($event.value)">
-                                <mat-option>--</mat-option>
-                                <mat-option *ngFor="let position of positions" [value]="position">
-                                    {{position.nameOfPosition}}
-                                </mat-option>
-                            </mat-select>
+                            <input matInput placeholder="Vị trí đỗ" disabled formControlName='nameOfPosition'>
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <input matInput [matDatepicker]="picker1" placeholder="Ngày Bắt Đầu" formControlName="dateBegin">
-                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                            <mat-datepicker #picker1></mat-datepicker>
+                            <input matInput placeholder="Ngày Bắt Đầu" formControlName="startDate">
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width">
-                            <input matInput [matDatepicker]="picker2" placeholder="Ngày Kết Thúc" formControlName="dateEnd">
-                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                            <mat-datepicker #picker1></mat-datepicker>
+                            <input matInput placeholder="Ngày Kết Thúc" formControlName="endDate">
                         </mat-form-field>
                     </td>
                 </tr>
