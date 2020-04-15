@@ -1,0 +1,175 @@
+<!-- <div class="container-fluid" style="height: 100%;">
+    <div  style="height: 65%; width: 50%;float: left;">
+        <app-extension-management></app-extension-management>
+    </div>
+    <div  style="height: 65%; width: 50%;float: left;">
+        <app-sell-management></app-sell-management>
+    </div>
+    <div style="height: 35%; width: 100%;float: left;" >
+        <app-delete-management></app-delete-management>
+    </div>
+</div>-->
+
+
+<!-- <div class="container-fluid" style="margin-top: 10px;">
+    <div class="row" style="margin-bottom: 5px;">
+        <div class="col-6">
+            <button (click)="addUser()" class="btn btn-primary mr-2">+ Thêm Vé</button>
+            <button (click)="save()" [disabled]="userForm.invalid" class="btn btn-success">Lưu Vé</button>
+        </div>
+
+        <div class="col-6" style="text-align: right;">
+            <input class="form-control" placeholder="Tìm kiếm" style="border-color:blue">
+        </div>
+    </div>
+    <div style="overflow-y:scroll;overflow-x:scroll;height:430px;">
+        <form [formGroup]="userForm">
+            <table class="table">
+                <thead>
+                    <th width="4%">ID Vé</th>
+                    <th width="6%">ID Xe</th>
+                    <th width="7%">Tên Khách Hàng</th>
+                    <th width="6%">Ngày Đăng Kí</th>
+                    <th width="6%">Ngày Hết Hạn</th>
+                    <th width="2%">Tầng</th>
+                    <th width="2%">Vị Trí</th>
+                    <th width="4%">Loại Vé</th>
+                    <th width="4%">Giá Vé(*)</th>
+                    <th width="10%"></th>
+                </thead>
+                <tbody formArrayName="users" *ngFor="let group of getFormData.controls; let i=index">
+                    <tr [formGroupName]="i">
+                        <td class="form-group">
+                            <input type="text" class="form-control" formControlName="idTicket" placeholder="ID Vé">
+                            <span class="text-danger" *ngIf="group.get('idTicket').touched && group.get('idTicket').invalid">required</span>
+                        </td>
+                        <td class="form-group">
+                            <input type="text" class="form-control" formControlName="idCar" placeholder="ID Xe">
+                            <span class="text-danger" *ngIf="group.get('idCar').touched && group.get('idCar')?.hasError('required')">required</span>
+                        </td>
+                        <td class="form-group">
+                            <input type="text" class="form-control" formControlName="customerName" placeholder="Tên Khách Hàng">
+                            <span class="text-danger" *ngIf="group.get('customerName').touched && group.get('customerName')?.hasError('required')">required</span>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" formControlName="startdate" placeholder="Ngày Bắt Đầu">
+                            <span class="text-danger" *ngIf="group.get('startdate').touched && group.get('startdate').invalid">Please enter</span>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" formControlName="enddate" placeholder="Ngày Kết Thúc">
+                            <span class="text-danger" *ngIf="group.get('enddate').touched && group.get('enddate').invalid">Please enter</span>
+                        </td>
+                        <td class="form-group">
+                            <input type="text" class="form-control" formControlName="floor" placeholder="Tầng">
+                            <span class="text-danger" *ngIf="group.get('floor').touched && group.get('floor')?.hasError('required')">required</span>
+                        </td>
+                        <td class="form-group">
+                            <input type="text" class="form-control" formControlName="ps" placeholder="Vị Trí">
+                            <span class="text-danger" *ngIf="group.get('ps').touched && group.get('ps')?.hasError('required')">required</span>
+                        </td>
+                        <td class="form-group">
+                            <input type="text" class="form-control" formControlName="type" placeholder="Loại">
+                            <span class="text-danger" *ngIf="group.get('type').touched && group.get('type')?.hasError('required')">required</span>
+                        </td>
+                        <td class="form-group">
+                            <input type="text" class="form-control" formControlName="price" placeholder="Giá">
+                            <span class="text-danger" *ngIf="group.get('price').touched && group.get('price')?.hasError('required')">required</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary mr-3">Gia Hạn</button>
+                            <button (click)="remove(i)" class="btn btn-danger">Hủy Vé</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <h4>*(Giá Vé Tính Bằng Đơn Vị Triệu VND)</h4>
+</div> -->
+
+
+<div class="basic-container">
+    <h4>Danh sách vé</h4>
+    <!-- Input Find -->
+    <form class="search ">
+        <mat-form-field>
+            <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
+            <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value" (click)="filter.value=''; applyFilter('');">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+    <div class="container">
+        <div class="container-table">
+            <table mat-table mat-table [dataSource]="DataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="idTicket">
+                    <th mat-header-cell *matHeaderCellDef> ID Vé </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.idTicket}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="idVehicle">
+                    <th mat-header-cell *matHeaderCellDef> ID Car </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.idVehicle}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="fullName">
+                    <th mat-header-cell *matHeaderCellDef> Tên Khách Hàng </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.fullName}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="startDate">
+                    <th mat-header-cell *matHeaderCellDef> Ngày Bắt Đầu </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.startDate | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="endDate">
+                    <th mat-header-cell *matHeaderCellDef> Ngày Kết Thúc </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.endDate | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="nameFloor">
+                    <th mat-header-cell *matHeaderCellDef> Tầng </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.nameFloor}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="nameOfPosition">
+                    <th mat-header-cell *matHeaderCellDef> Vị Trí </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.nameOfPosition}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="ticketType">
+                    <th mat-header-cell *matHeaderCellDef> Loại Vé </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.ticketType}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="cost">
+                    <th mat-header-cell *matHeaderCellDef> Giá </th>
+                    <td mat-cell *matCellDef="let ticket"> {{ticket.cost}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="headerTable"> Tác vụ </th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        <button mat-raised-button color="primary" (click)="passData(element.idTicket)">Chọn</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+
+        </div>
+        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
+        </mat-paginator>
+    </div>
+</div>

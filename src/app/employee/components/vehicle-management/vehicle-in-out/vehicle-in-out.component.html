@@ -1,0 +1,114 @@
+<div class="h-100 w-100">
+    <div class="row  w-100 mx-0">
+        <div class="col-6  p-15">
+            <div style="text-align: center;">
+                <h2>Xe Vào</h2>
+            </div>
+            <div class="row mx-0" style="border: 1px;border-style: solid;padding: 15px 0 15px 0;">
+                <div class="col-6 py-15">
+                    <mat-card>
+                        <img class="mx-10" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    </mat-card>
+                </div>
+                <div class="col-6">
+                    <mat-card>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    </mat-card>
+                </div>
+            </div>
+            <div style="margin-top: 15px;">
+                <mat-form-field style="margin-right: 40px;">
+                    <input matInput placeholder="Thời gian vào" value="8:20:20 PM">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker3" placeholder="Ngày" [value]="date.value">
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="col-6 p-15 ">
+            <div style="text-align: center;">
+                <h2>Xe Ra</h2>
+            </div>
+            <div class="row mx-0" style="border: 1px;border-style: solid;padding: 15px 0 15px 0;">
+                <div class="col-6">
+                    <mat-card>
+                        <img class="mx-10" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    </mat-card>
+                </div>
+                <div class="col-6 py-15">
+                    <mat-card>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    </mat-card>
+                </div>
+            </div>
+            <div style="margin-top: 15px;">
+                <mat-form-field style="margin-right: 40px;">
+                    <input matInput placeholder="Thời gian ra" value="8:20:20 PM">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker9" placeholder="Ngày" [value]="date.value">
+                    <mat-datepicker-toggle matSuffix [for]="picker9"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div style="margin-left: 15px;">
+        <button mat-raised-button style="margin-right: 50px" (click)="openDialogPickVehicle()">Tìm Xe</button>
+    </div>
+    <div class="basic-container">
+        <form [formGroup]='formTicketDetail'>
+            <table class="w-100" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Họ Tên Khách Hàng" disabled formControlName='fullName'>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Email" disabled formControlName='email'>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Loại Xe" disabled formControlName='typeVehicle'>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Biển Số" disabled formControlName='idVehicle'>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Tầng" disabled formControlName='nameFloor'>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Vị trí đỗ" disabled formControlName='nameOfPosition'>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Ngày Bắt Đầu" formControlName="startDate">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Ngày Kết Thúc" formControlName="endDate">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div style="text-align: center;">
+        <button mat-raised-button>Lưu Thông Tin</button>
+    </div>
+</div>

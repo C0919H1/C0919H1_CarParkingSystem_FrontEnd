@@ -1,35 +1,34 @@
-<form class="container">
+<form class="container" [formGroup]="formTracking" (ngSubmit)="onSubmit()">
     <h4>Thống Kê</h4>
     <div class="select">
         <div class="select-item">
-            <mat-form-field class="example-full-width">
-                <input matInput [matDatepicker]="picker" placeholder="Ngày Bắt Đầu" required>
-                <mat-datepicker-toggle matSuffix [for]="picker">
-                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                </mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+            <mat-form-field>
+                <input matInput  [matDatepicker]="picker1" [max]="maxDate" placeholder="Ngày Bắt Đầu" (dateInput)="addEvent('input', $event)" formControlName="timeIn" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
+            <!-- <input type="text" placeholder="Ngày Bắt Đầu" formControlName="timeIn"> -->
         </div>
         <div class="select-datetime">
-            <mat-form-field class="example-full-width">
-                <input matInput [matDatepicker]="picker1" placeholder="Ngày Kết Thúc" required>
-                <mat-datepicker-toggle matSuffix [for]="picker1">
-                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                </mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker2" [min]="minDate2" placeholder="Ngày Kết Thúc"  formControlName="timeOut" required>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field>
+            <!-- <input type="text" placeholder="Ngày Kết Thúc" formControlName="timeOut"> -->
         </div>
         <div class="select-btn">
             <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+            <button mat-button mat-raised-button color="primary" (click)="getTrackingTime()" type="submit">Click</button>
         </div>
+        <mat-error class="error-message">
+            {{listError}}
+        </mat-error>
     </div>
     <div class="chart">
         <div style="display: block">
-            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
         </div>
         <p class="tittle">Biểu đồ thống kê xe ra/vào và doanh thu theo ngày.</p>
-        <p class="static">Doanh Thu Hôm Nay : </p>
     </div>
 </form>

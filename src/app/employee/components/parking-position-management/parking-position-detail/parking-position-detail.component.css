@@ -12,3 +12,9 @@
 .name {
     color: gainsboro;
 }
+
+.detail {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

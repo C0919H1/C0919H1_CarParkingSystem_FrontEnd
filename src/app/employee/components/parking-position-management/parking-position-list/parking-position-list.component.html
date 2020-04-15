@@ -32,16 +32,17 @@
             <h6 h6 style="margin-left: 30px; float: left; font-weight: bolder;">Tầng: </h6>
         </mat-grid-tile>
         <mat-grid-tile>
-            <mat-form-field style="float: left;">
-                <mat-label>Tầng</mat-label>
-                <select matNativeControl required (change)="chooseFloor($event.target.value)">
-                    <option value="" selected disabled></option>
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                </select>
-            </mat-form-field>
+            <form [formGroup]='formFloor'>
+                <mat-form-field style="float: left;">
+                    <mat-label></mat-label>
+                    <mat-select formControlName='nameFloor' (selectionChange)="chooseFloor($event.value)">
+                        <mat-option [value]=0>--</mat-option>
+                        <mat-option *ngFor="let floor of floors" [value]="floor">
+                            {{floor.nameFloor}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
         </mat-grid-tile>
     </mat-grid-list>
     <div class="container">
@@ -68,7 +69,16 @@
                 <ng-container matColumnDef="floor">
                     <th mat-header-cell *matHeaderCellDef> Tầng </th>
                     <td mat-cell *matCellDef="let element">
-                        <p *ngIf="!element.create">{{element.parkingFloor.idParkingFloor}} </p>
+                        <p *ngIf="!element.create">{{element.idParkingFloor}} </p>
+                        <!-- <p *ngIf="element.create && formCreateVehicle.controls.typeOfVehicle.errors?.required && formCreateVehicle.controls.typeOfVehicle.touched"
+                         class="text-danger">Vui lòng nhập loại xe</p> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Tình trạng </th>
+                    <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.create">{{element.positionStatus}} </p>
                         <!-- <p *ngIf="element.create && formCreateVehicle.controls.typeOfVehicle.errors?.required && formCreateVehicle.controls.typeOfVehicle.touched"
                          class="text-danger">Vui lòng nhập loại xe</p> -->
                     </td>
@@ -78,9 +88,21 @@
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef class="headerTable"> Tác vụ </th>
                     <td mat-cell *matCellDef="let element; let i = index;">
+<<<<<<< HEAD
                         <mat-icon (click)="openDialogParkingPosition(element.idParkingPosition)">edit</mat-icon>
                         <mat-icon style="margin-left: 20px;">save</mat-icon>
                         <mat-icon style="margin-left: 30px;">delete</mat-icon>
+=======
+                        <button mat-icon-button color="accent" (click)="openDialogDetailPosition(element.idParkingPosition)">
+                            <mat-icon aria-label="Edit">info</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent">
+                            <mat-icon aria-label="Delete">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent">
+                            <mat-icon aria-label="Edit">delete</mat-icon>
+                          </button>
+>>>>>>> 69c8f2d653c8bc78ab0894251d55b3af898eab64
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
@@ -88,8 +110,7 @@
 
             </table>
         </div>
-        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"
-            [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
+        <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = handlePage($event)">
         </mat-paginator>
         <div class="map">
             <button mat-button (click)="openDialogPositionChart()">Map</button>

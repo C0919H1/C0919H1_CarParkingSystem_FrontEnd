@@ -25,7 +25,7 @@ export class ParkingPositionService {
     return this.http.get(this.API + '?floor=' + floor);
 
 }
-  getParkingPositionById(id : number) : Observable<any>{
+  getParkingPositionById(id) : Observable<any>{
     return this.http.get(this.API + '/' + id);
   }
   editParkingPositionById(id : number , parkingPosition,floor) : Observable<any>{

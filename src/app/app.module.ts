@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { MatPaginatorIntl } from '@angular/material';
 import { getDutchPaginatorIntl } from './dutch-paginator-intl';
 import { PlugingFbGgModule } from './pluging-fb-gg.module';
+import { FormsModule } from '@angular/forms';
 
 const config = new AuthServiceConfig([
   {
@@ -41,7 +42,8 @@ export function provideConfig() {
     BrowserAnimationsModule,
     HttpClientModule,
     PlugingFbGgModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FormsModule
   ],
 
   providers: [

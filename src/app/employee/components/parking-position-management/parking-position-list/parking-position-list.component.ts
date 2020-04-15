@@ -9,6 +9,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ParkingPositionService } from 'src/app/services/parking-position.service';
 import { ParkingPositionEditComponent } from '../parking-position-edit/parking-position-edit.component';
 import { PositionChartComponent } from '../position-chart/position-chart.component';
+import { ParkingPositionDetailComponent } from '../parking-position-detail/parking-position-detail.component';
+import { ParkingFloorService } from 'src/app/services/parking-floor.service';
+
 
 @Component({
   selector: 'app-parking-position-list',
@@ -17,6 +20,7 @@ import { PositionChartComponent } from '../position-chart/position-chart.compone
 })
 export class ParkingPositionListComponent implements OnInit {
 
+  private floors;
   formParkingPosition: FormGroup;
   formFloor: FormGroup;
   public flag = false;
@@ -28,14 +32,15 @@ export class ParkingPositionListComponent implements OnInit {
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public parkingPositionService: ParkingPositionService
+    private parkingPositionService: ParkingPositionService,
+    private parkingFloorService: ParkingFloorService
   ) { }
   pageIndex: number = 0;
   pageSize: number = 5;
   length: number;
   pageEvent: PageEvent;
   filterValue: string = "";
-  displayedColumns: string[] = ['position', 'floor', 'action'];
+  displayedColumns: string[] = ['STT', 'position', 'floor', 'status', 'action'];
   dataSource: MatTableDataSource<ParkingPosition>;
 
   public handlePage(event?: PageEvent) {
@@ -50,24 +55,38 @@ export class ParkingPositionListComponent implements OnInit {
     this.ngOnInit();
   }
 
-  chooseFloor(floor: number) {
+  chooseFloor(floor) {
     this.flag = true;
-    this.floor = floor;
+    if (floor === 0) {
+      this.floor = 0;
+    } else {
+      this.floor = floor.idParkingFloor;
+    }
     console.log(floor);
-    this.ngOnInit();
+    this.getAllParkingPosition();
   }
 
   ngOnInit() {
     this.getAllParkingPosition();
+    this.formFloor = this.formBuilder.group({
+      idParkingFloor: [''],
+      nameFloor: [''],
+      amount: ['']
+    });
+    this.activatedRoute.params.subscribe(data => {
+      this.parkingFloorService.getAllFloor().subscribe(data => {
+        this.floors = data;
+      })
+    });
   }
-  
+
 
   addPosition() {
     console.log("thêm");
   }
 
   getAllParkingPosition() {
-    if (!this.flag) {
+    if (!this.flag || this.floor === 0) {
       this.parkingPositionService.getAllParkingPosition(this.pageIndex, this.pageSize, this.filterValue).subscribe(
         data => {
 
@@ -120,5 +139,21 @@ export class ParkingPositionListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(()=>{
       this.getAllParkingPosition();
        });
+  }
+
+  openDialogDetailPosition(id): void {
+    this.parkingPositionService.getParkingPositionById(id).subscribe(data =>{
+      console.log(data);
+      const dialogRef = this.dialog.open(ParkingPositionDetailComponent, {
+        width: '1000px',
+        height: '500px',
+        data: {positionData: data},
+        disableClose: false
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.ngOnInit();
+      });
+    })
   }
 }

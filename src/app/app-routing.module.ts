@@ -8,7 +8,6 @@ import { MatDialogModule, MatInputModule, MatDatepicker } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChartsModule } from 'ng2-charts';
 
-
 import { HeaderComponent } from './employee/layout/header/header.component';
 import { FooterComponent } from './employee/layout/footer/footer.component';
 import { MainComponent } from './employee/layout/main/main.component';
@@ -39,17 +38,19 @@ import { ParkingPositionAddComponent } from './employee/components/parking-posit
 import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days.component';
 import { ParkingPositionEditComponent } from './employee/components/parking-position-management/parking-position-edit/parking-position-edit.component';
 import { PositionChartComponent } from './employee/components/parking-position-management/position-chart/position-chart.component';
+import { VehicleInOutComponent } from './employee/components/vehicle-management/vehicle-in-out/vehicle-in-out.component';
+import { VehiclePickComponent } from './employee/components/vehicle-management/vehicle-pick/vehicle-pick.component';
 
 
 const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
-      { path: 'car-management', component: PageNotFoundComponent },
+      { path: 'car-management', component: VehicleInOutComponent },
       { path: 'home-page', component: HomePageComponent },
       { path: 'ticket-management', component: TicketManagementComponent },
       { path: 'employee-list', component: EmployeeListComponent },
       { path: 'customer-list', component: CustomerListComponent },
-     
+
 
       {
         path: 'money-management', component: MainManagementComponent, children: [
@@ -91,7 +92,40 @@ const routes: Routes = [
     MatDatepicker,
     MaterialModule
   ],
-  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent,ParkingPositionEditComponent,PositionChartComponent],
-  declarations: [HeaderComponent,CarStatisticDaysComponent,ParkingPositionEditComponent,ParkingPositionAddComponent,ParkingPositionDetailComponent, FooterComponent, MainComponent, PageNotFoundComponent, HomePageComponent, LoginComponent, TicketManagementComponent, SellManagementComponent, ExtensionManagementComponent, DeleteManagementComponent, EmployeeListComponent, ForgotPasswordDialogComponent, LogoutDialogComponent, CustomerListComponent, VehicleListComponent, CustomerDeletedComponent, CustomerEditComponent, TestLoginComponent, VehiclePickedComponent, TicketPickedComponent, MainManagementComponent, MainScreenComponent, CarStatisticComponent, RevenueStatisticComponent, ParkingPositionListComponent, PositionChartComponent]
+  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent,ParkingPositionEditComponent,ParkingPositionEditComponent,PositionChartComponent],
+  declarations: [
+    HeaderComponent, 
+    FooterComponent, 
+    MainComponent, 
+    PageNotFoundComponent, 
+    HomePageComponent, 
+    LoginComponent, 
+    TicketManagementComponent, 
+    SellManagementComponent, 
+    ExtensionManagementComponent, 
+    DeleteManagementComponent, 
+    EmployeeListComponent, 
+    ForgotPasswordDialogComponent, 
+    LogoutDialogComponent, 
+    CustomerListComponent, 
+    VehicleListComponent, 
+    CustomerDeletedComponent, 
+    CustomerEditComponent, 
+    TestLoginComponent, 
+    VehiclePickedComponent, 
+    TicketPickedComponent, 
+    MainManagementComponent, 
+    MainScreenComponent, 
+    CarStatisticComponent, 
+    RevenueStatisticComponent,
+    ParkingPositionListComponent, 
+    ParkingPositionDetailComponent, 
+    CarStatisticDaysComponent,
+    ParkingPositionAddComponent,
+    ParkingPositionEditComponent,
+    VehicleInOutComponent,
+    VehiclePickComponent,
+    PositionChartComponent]
+
 })
 export class AppRoutingModule { }

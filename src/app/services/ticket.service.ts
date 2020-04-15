@@ -21,6 +21,9 @@ export class TicketService {
   getTicketById(idTicket): Observable<any>{
     return this.http.get(this.baseURL + 'ticket/' + idTicket);
   }
+  getTicketDTO3ById(idTicket): Observable<any>{
+    return this.http.get(this.baseURL + 'ticketById/' + idTicket);
+  }
   deleteTicketById(id:number): Observable<any> {
     return this.http.patch(this.baseURL+id,this.httpOptions);
   }
@@ -44,5 +47,8 @@ export class TicketService {
   }
   getPositionByName(namePosition): Observable<any> {
     return this.http.get(this.baseURL + '?name=' + namePosition)
+  }
+  getTicketByPositionId(id): Observable<any> {
+    return this.http.get(this.baseURL + 'ticketByParkingPosition/' + id)
   }
 }
