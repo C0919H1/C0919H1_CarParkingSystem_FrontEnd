@@ -1,0 +1,54 @@
+.container {
+    text-align: left;
+    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    margin-top: 1rem;
+    /* border: 2px solid rgb(201, 194, 194) !important; */
+    /* border-radius: 1px !important; */
+    /* padding: 10px 5px; */
+}
+
+h4 {
+    font-size: 30px !important;
+    margin-bottom: 7px;
+}
+
+.select {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    height: 10%;
+    width: 100%;
+    
+}
+
+.select div {
+    display: inline;
+    min-height: 50px;
+}
+
+.select-item{
+    width: 30%;
+    margin-right: 5rem;
+}
+
+.select-datetime{
+    width: 30%;
+    margin-right: 5rem;
+
+}
+
+.select-btn{
+    width: 30%;
+}
+.char {
+    height: 80%;
+}
+.tittle{
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.static{
+    margin-top: 0;
+}

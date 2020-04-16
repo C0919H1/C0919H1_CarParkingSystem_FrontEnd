@@ -45,4 +45,7 @@ export class TicketService {
   getPositionByName(namePosition): Observable<any> {
     return this.http.get(this.baseURL + '?name=' + namePosition)
   }
+  getTicketByPositionId(id): Observable<any> {
+    return this.http.get(this.baseURL + 'ticketByParkingPosition/' + id)
+  }
 }

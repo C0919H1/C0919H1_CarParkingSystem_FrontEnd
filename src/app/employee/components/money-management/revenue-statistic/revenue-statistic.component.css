@@ -1,7 +1,10 @@
 .chart-wrapper{
-    width: 88% !important;
+    width: 100% !important;
 } 
 .ui-datepicker-calendar {
     display: none;
  }
  
+ h1{
+     text-align: center;
+ }

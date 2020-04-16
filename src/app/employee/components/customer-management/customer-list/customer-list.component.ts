@@ -95,7 +95,7 @@ export class CustomerListComponent implements OnInit {
   getAllCustomer() {
     this.customerService.getAllCustomer(this.pageIndex, this.pageSize, this.filterValue).subscribe(
       data => {
-        for(let thanh of data.content){
+        for (let thanh of data.content) {
           thanh.create = false;
         }
         this.dataSource = data.content;
@@ -166,7 +166,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   openEdit(id: number, index: number): void {
-    if(index == 0){
+    if (index == 0) {
       this.customer[0].isText = false;
     }
     this.customer[index].create = true;
