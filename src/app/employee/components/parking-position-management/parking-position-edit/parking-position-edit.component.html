@@ -1,19 +1,28 @@
-<div class="example-container">
+<div class="example-container" >
     <h1>Sửa thông tin vị trí bãi đổ xe</h1>
     <hr>
-    <mat-form-field appearance="fill">
-      <mat-label>Tên vị trí đỗ xe</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Tầng</mat-label>
-      <mat-select>
-        <mat-option value="1">1</mat-option>
-        <mat-option value="2">2</mat-option>
-        <mat-option value="3">3</mat-option>
-      </mat-select>
-    </mat-form-field>
-   <button mat-button style="color: blue;" (click)="edit()">Edit</button>
-   <button mat-button  style="color: red;" mat-dialog-close>Hủy</button>
+    <form class="example-form" [formGroup] = "formEditPosition">
+      <mat-form-field class="example-full-width">
+        <mat-label>Tên vị trí đỗ</mat-label>
+        <input matInput formControlName="nameOfPosition">
+      </mat-form-field>
+     
+     
+        <mat-form-field style="float: left;">
+            <mat-label>Tầng</mat-label>
+            <select matNativeControl required [(ngModel)]="floor" [ngModelOptions]="{standalone: true}">
+                <option value="" selected disabled></option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+            </select>
+        </mat-form-field>
+   
+     <button mat-button style="color: blue;" (click)="edit()">Edit</button>
+     <button mat-button  style="color: red;" mat-dialog-close>Hủy</button>
+    
+     
+    </form>
+    
   </div>

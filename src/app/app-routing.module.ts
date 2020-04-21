@@ -8,7 +8,6 @@ import { MatDialogModule, MatInputModule, MatDatepicker } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChartsModule } from 'ng2-charts';
 
-
 import { HeaderComponent } from './employee/layout/header/header.component';
 import { FooterComponent } from './employee/layout/footer/footer.component';
 import { MainComponent } from './employee/layout/main/main.component';
@@ -38,6 +37,7 @@ import { ParkingPositionDetailComponent } from './employee/components/parking-po
 import { ParkingPositionAddComponent } from './employee/components/parking-position-management/parking-position-add/parking-position-add.component';
 import { CarStatisticDaysComponent } from './employee/components/money-management/car-statistic-days/car-statistic-days.component';
 import { ParkingPositionEditComponent } from './employee/components/parking-position-management/parking-position-edit/parking-position-edit.component';
+import { PositionChartComponent } from './employee/components/parking-position-management/position-chart/position-chart.component';
 import { VehicleInOutComponent } from './employee/components/vehicle-management/vehicle-in-out/vehicle-in-out.component';
 import { VehiclePickComponent } from './employee/components/vehicle-management/vehicle-pick/vehicle-pick.component';
 
@@ -92,7 +92,7 @@ const routes: Routes = [
     MatDatepicker,
     MaterialModule
   ],
-  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent,ParkingPositionEditComponent],
+  entryComponents: [ForgotPasswordDialogComponent, LogoutDialogComponent,ParkingPositionEditComponent,ParkingPositionEditComponent,PositionChartComponent],
   declarations: [
     HeaderComponent, 
     FooterComponent, 
@@ -124,7 +124,8 @@ const routes: Routes = [
     ParkingPositionAddComponent,
     ParkingPositionEditComponent,
     VehicleInOutComponent,
-    VehiclePickComponent]
+    VehiclePickComponent,
+    PositionChartComponent]
 
 })
 export class AppRoutingModule { }

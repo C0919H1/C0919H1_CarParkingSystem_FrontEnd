@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { RevenueService } from '../../../../services/revenue.service'
+declare var $: any;
+
 @Component({
   selector: 'app-revenue-statistic',
   templateUrl: './revenue-statistic.component.html',
@@ -12,25 +16,55 @@ export class RevenueStatisticComponent implements OnInit {
   isOpen = false;
 
 
-  public data: Array<any> =[45, 37, 60, 34, 46, 45, 65, 45, 60, 45, 32, 65];
+  public dataChart =[];
+  public nameData = [];
 
-
-  constructor() { }
+  constructor(
+    public formBuilder: FormBuilder,
+    public revenueService: RevenueService
+  ) { }
 
   ngOnInit() {
+
+    // $(".datepickerFrom").datepicker({
+    //   format: "yyyy",
+    //   viewMode: "years",
+    //   minViewMode: "years" 
+    // });
+    // $(".datepickerTo").datepicker({
+    //   format: "yyyy",
+    //   viewMode: "years",
+    //   minViewMode: "years"
+    // });
+    this.getRevenueAll();
+
   }
+
   barChartOptions: ChartOptions = {
     responsive: true,
   };
-  barChartLabels: Label[] = ['Năm 2009', 'Năm 2010', 'Năm 2011', 'Năm 2012', 'Năm 2013', 'Năm 2014', 'Năm 2015', 'Năm 2016', 'Năm 2017', 'Năm 2018', 'Năm 2019', 'Năm 2020'];
+  barChartLabels: Label[] = this.nameData;
   barChartType: ChartType = 'bar';
   barChartLegend = true;
-  barChartPlugins = [];
+  barChartPlugins = []; 
 
   barChartData: ChartDataSets[] = [
-    { data: this.data, label: 'BIỂU ĐỒ THỐNG KÊ DOANH THU HẰNG NĂM (Tỷ)' }
+    { data: this.dataChart, label: 'BIỂU ĐỒ THỐNG KÊ DOANH THU HẰNG NĂM (Triệu)' }
   ];
   barChartColors: Color[] = [
     { backgroundColor: 'rgb(220,20,60)' }
   ]
+  getRevenueAll() { 
+    this.revenueService.getRevenueAll().subscribe(
+      data => {
+        for(let element=0;element<data.length;element++) {
+          this.dataChart.push(data[element][1]);
+          this.nameData.push(data[element][0]);
+          
+        };
+        console.log(this.dataChart)
+
+      }
+    )
+  }
 }
