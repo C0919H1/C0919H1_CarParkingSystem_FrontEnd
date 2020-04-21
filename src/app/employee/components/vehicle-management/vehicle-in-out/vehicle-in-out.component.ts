@@ -10,6 +10,7 @@ import { VehiclePickComponent } from '../vehicle-pick/vehicle-pick.component'
 })
 
 export class VehicleInOutComponent implements OnInit {
+  private convertDate;
   private formTicketDetail: FormGroup;
   private disabled = true;
   date = new FormControl(new Date());
@@ -41,7 +42,13 @@ export class VehicleInOutComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(data => {
-      console.log(data);
+      console.log(data.data.endDate.slice(0 , 10));
+      data.data.endDate = data.data.endDate.slice(0 , 10);
+      data.data.startDate = data.data.startDate.slice(0 , 10);
+        // this.convertDate = data.startDate.getDate() + "/" + data.startDate.getMonth()  + "/" + data.startDate.getFullYear();
+        // data.startDate = this.convertDate;
+        // this.convertDate = data.endDate.getDate() + "/" + data.endDate.getMonth()  + "/" + data.endDate.getFullYear();
+        // data.endDate = this.convertDate;
       this.formTicketDetail.patchValue(data.data)
     });
   }
