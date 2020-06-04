@@ -79,7 +79,6 @@ export class VehiclePickComponent implements OnInit {
   }
   
   doAction(){
-    
   }
 
   ngOnInit() {

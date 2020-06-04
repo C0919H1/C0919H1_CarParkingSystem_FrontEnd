@@ -17,13 +17,14 @@
                 </div>
             </div>
             <div style="margin-top: 15px;">
-                <mat-form-field style="margin-right: 40px;">
-                    <input matInput placeholder="Thời gian vào" value="8:20:20 PM">
+                <mat-form-field style="margin-right: 30px;">
+                    <input matInput placeholder="Thời gian vào" [value]="timeIn">
+                </mat-form-field>
+                <mat-form-field style="margin-right: 30px;">
+                    <input matInput placeholder="Ngày" [value]="dayIn">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker3" placeholder="Ngày" [value]="date.value">
-                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                    <mat-datepicker #picker3></mat-datepicker>
+                    <input matInput placeholder="Biển số" [value]="licensePlateIn">
                 </mat-form-field>
             </div>
         </div>
@@ -44,13 +45,14 @@
                 </div>
             </div>
             <div style="margin-top: 15px;">
-                <mat-form-field style="margin-right: 40px;">
-                    <input matInput placeholder="Thời gian ra" value="8:20:20 PM">
+                <mat-form-field style="margin-right: 30px;">
+                    <input matInput placeholder="Thời gian ra" [value]="timeOut">
+                </mat-form-field>
+                <mat-form-field style="margin-right: 30px;">
+                    <input matInput placeholder="Ngày" [value]="dayOut">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker9" placeholder="Ngày" [value]="date.value">
-                    <mat-datepicker-toggle matSuffix [for]="picker9"></mat-datepicker-toggle>
-                    <mat-datepicker #picker3></mat-datepicker>
+                    <input matInput placeholder="Biển số" [value]="licensePlateOut">
                 </mat-form-field>
             </div>
         </div>

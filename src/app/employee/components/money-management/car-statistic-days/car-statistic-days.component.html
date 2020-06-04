@@ -1,34 +1,36 @@
-<form class="container" [formGroup]="formTracking" (ngSubmit)="onSubmit()">
-    <h4>Thống Kê</h4>
-    <div class="select">
-        <div class="select-item">
-            <mat-form-field>
-                <input matInput  [matDatepicker]="picker1" [max]="maxDate" placeholder="Ngày Bắt Đầu" (dateInput)="addEvent('input', $event)" formControlName="timeIn" required>
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-            <!-- <input type="text" placeholder="Ngày Bắt Đầu" formControlName="timeIn"> -->
+<div style="width: 100%; height: 100%;">
+    <form [formGroup]="formTracking" (ngSubmit)="onSubmit()" style="width: 100% !important; height: 100% !important;">
+        <h4>Thống Kê</h4>
+        <div class="select">
+            <div class="select-item">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker1" [max]="maxDate" placeholder="Ngày Bắt Đầu" (dateInput)="addEvent('input', $event)" formControlName="timeIn" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <!-- <input type="text" placeholder="Ngày Bắt Đầu" formControlName="timeIn"> -->
+            </div>
+            <div class="select-datetime">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker2" [min]="minDate2" [max]="maxDate" placeholder="Ngày Kết Thúc" formControlName="timeOut" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+                <!-- <input type="text" placeholder="Ngày Kết Thúc" formControlName="timeOut"> -->
+            </div>
+            <div class="select-btn">
+                <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+                <button mat-button mat-raised-button color="primary" (click)="getTrackingTime()" type="submit">Click</button>
+            </div>
+            <mat-error class="error-message">
+                {{listError}}
+            </mat-error>
         </div>
-        <div class="select-datetime">
-            <mat-form-field>
-                <input matInput [matDatepicker]="picker2" [min]="minDate2" [max]="maxDate" placeholder="Ngày Kết Thúc"  formControlName="timeOut" required>
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-            <!-- <input type="text" placeholder="Ngày Kết Thúc" formControlName="timeOut"> -->
+        <div class="chart">
+            <div style="display: block">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+            <p class="tittle">Biểu đồ thống kê xe ra/vào và doanh thu theo ngày.</p>
         </div>
-        <div class="select-btn">
-            <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
-            <button mat-button mat-raised-button color="primary" (click)="getTrackingTime()" type="submit">Click</button>
-        </div>
-        <mat-error class="error-message">
-            {{listError}}
-        </mat-error>
-    </div>
-    <div class="chart">
-        <div style="display: block">
-            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-        </div>
-        <p class="tittle">Biểu đồ thống kê xe ra/vào và doanh thu theo ngày.</p>
-    </div>
-</form>
+    </form>
+</div>
