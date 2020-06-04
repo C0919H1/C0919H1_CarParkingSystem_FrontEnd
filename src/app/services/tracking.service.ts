@@ -21,4 +21,8 @@ export class TrackingService {
   getTrackingTimeOut(timeIn, timeOut): Observable<any> {
     return this.http.get(this.API+"/out"+"?timeIn="+timeIn+"&timeOut="+timeOut);
   }
+
+  getTrackingTime(licensePlate): Observable<any> {
+    return this.http.get("http://localhost:8080/trackingTime/" + licensePlate);
+  }
 }

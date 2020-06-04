@@ -22,8 +22,8 @@ export class MainScreenComponent implements OnInit {
   public numberTicket;
   public numberPosition;
   public chartLegend = true;
-  public chartLabels;
-  public chartData ;
+  public chartLabels = ['Honda', 'Toyota', 'Mercedes', 'Mazda','Ford'];
+  public chartData = [120, 150, 180, 90, 40];
   public chartType = 'doughnut';
   public chartColors: any[] = [{ backgroundColor:["#44FF07", "#FED60A", "#FB0007", "#3700FF","#FB13F3","#7CDDDD"] }];
   public pieChartOptions: ChartOptions = {

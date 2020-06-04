@@ -19,7 +19,7 @@ export class CarStatisticDaysComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
-    scales: { xAxes: [{}], yAxes: [{ ticks: { beginAtZero: true } }] },
+    scales: { xAxes: [{ scaleLabel:{display:true,labelString: 'Ngày(mm/dd)'}}], yAxes: [{ ticks: { beginAtZero: true,callback: function(value) { if (value %1 ===0){return value;}} },scaleLabel:{display:true,labelString: 'Số Xe'} }] },
   };
   public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
